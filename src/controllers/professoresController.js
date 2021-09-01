@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Professor = require('../models/professores')
+const Agenda = require('../models/agenda')
 
 const getAll = async (req, res) => {
   const professor = await Professor.find()
@@ -74,17 +75,25 @@ const createProfessor = async (req, res) => {
   const removeOneProfessor = async (req, res) => {
     try{
       const professor = await Professor.findById(req.params.id)
+   
       if (professor == null){
         return res.status(404).json({message: "Professor  não encontrado"})
       }
+
+      const aulaAgendada = await Agenda.findOne({professor: professor})
+      if(aulaAgendada){
+        res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
+      }else{
+
       professor.remove()
       res.status(200).json({"mensagem":"Professor removido com sucesso"})
+      }
+      }
   
-    }catch (err){
+    catch (err){
       res.status(500).json({message: err.message})
     }
   }
-
 
 
 module.exports = {

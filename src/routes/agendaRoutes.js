@@ -10,15 +10,16 @@ router.post('/aula', controller.createAula)
 
 router.post('/aula/:id', controller.createAluno)
 
-// //listar um titulo/get/findById
-// router.get('/:id', controller.findByIdSchedule)
+//listar um titulo/get/findById
+router.get('/:id', controller.findAgendaAluno)
+router.get('/professor/:id', controller.findAgendaProfessor)
 
 // //atualizar uma informacao especifica num titulo/patch/findById/save
 // router.put('/:id', controller.updateOneSchedule)
 // router.patch('/anything/:id', controller.updateAnythingSchedule)
 
 // //deletar um titulo/delete/findById/remove
-// router.delete('/:id', controller.removeOneSchedule)
+router.delete('/:id', controller.removeOneAula)
 
 
 module.exports = router
