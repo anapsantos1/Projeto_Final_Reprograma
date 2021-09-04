@@ -1,25 +1,26 @@
 const mongoose = require('mongoose')
 const Aluno = require('../models/alunos')
 const Agenda = require('../models/agenda')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const SECRET = process.env.SECRET
 
-
-const getAll = async (req, res) => {
-  const aluno = await Aluno.find()
-  res.status(200).json(aluno)
-}
 
 const createAluno = async (req, res) => {
+    const senhaComHash = bcrypt.hashSync(req.body.password, 8)
+    req.body.password = senhaComHash
     const aluno = new Aluno({
       _id: new mongoose.Types.ObjectId(),
       nome: req.body.nome,
       email: req.body.email,
+      password: req.body.password,
       cidade: req.body.cidade,
       disciplinas: req.body.disciplinas,
       duvidas: req.body.duvidas,
       cursando: req.body.cursando,
       criadoEm: req.body.criadoEm
     })
-    //TODO : criar validação se filme já existe
+  
     const alunoJaExiste = await Aluno.findOne({email: req.body.email})
     if (alunoJaExiste) {
       return res.status(409).json({error: 'Aluno ja cadastrado.'})
@@ -32,7 +33,57 @@ const createAluno = async (req, res) => {
     }
   }
 
+  const login = (req, res) => {
+    Aluno.findOne({ email: req.body.email }, (err, alunoEncontrado) => {
+   
+      if (!alunoEncontrado) {
+        return res.status(404).send({ message: 'Aluno não encontrada', email: `${req.body.email}`})
+      }
+     console.log(alunoEncontrado)
+
+    const senhaValida = bcrypt.compareSync(req.body.password, alunoEncontrado.password)
+      
+      if (!senhaValida) {
+        return res.status(401).send({message: "Login não autorizado"})
+      }
+      console.log(senhaValida)
+  
+      const token = jwt.sign({email: req.body.email}, SECRET)
+      res.status(200).send({ messagem: "Login realizado com sucesso", token: token})
+  })
+}
+
+const getAll = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
+    const aluno = await Aluno.find()
+    res.status(200).json(aluno)
+  })
+  
+}
+  
+
   const findByIdAlunos = async (req, res) => {
+    const authHeader = req.get('Authorization');
+    const token = authHeader.split(' ')[1]
+    console.log(token)
+    if (!token) {
+      return res.status(403).send({message: "Kd a autorizationnn"})
+    }
+  
+    jwt.verify(token, SECRET, async (err) => {
+      if (err){
+        res.status(403).send({message: '  token não valido', err})
+      }
     try{
   
       const  idRequerido = req.params.id
@@ -45,9 +96,21 @@ const createAluno = async (req, res) => {
   }catch (err){
     res.status(400).json({ message: err.message})
   }
-  }
+  })
+}
 
   const updateAnythingAluno = async (req, res) => {
+    const authHeader = req.get('Authorization');
+    const token = authHeader.split(' ')[1]
+    console.log(token)
+    if (!token) {
+      return res.status(403).send({message: "Kd a autorizationnn"})
+    }
+  
+    jwt.verify(token, SECRET, async (err) => {
+      if (err){
+        res.status(403).send({message: '  token não valido', err})
+      }
     try{
       const aluno = await Aluno.findById(req.params.id)
       if (aluno == null){
@@ -72,9 +135,21 @@ const createAluno = async (req, res) => {
     catch (err){
       res.status(500).json({message: err.message})
     }
-  }
+  })
+}
 
   const removeOneAluno = async (req, res) => {
+    const authHeader = req.get('Authorization');
+    const token = authHeader.split(' ')[1]
+    console.log(token)
+    if (!token) {
+      return res.status(403).send({message: "Kd a autorizationnn"})
+    }
+  
+    jwt.verify(token, SECRET, async (err) => {
+      if (err){
+        res.status(403).send({message: '  token não valido', err})
+      }
     try{
       const aluno = await Aluno.findById(req.params.id)
       if (aluno == null){
@@ -91,7 +166,8 @@ const createAluno = async (req, res) => {
     }catch (err){
       res.status(500).json({message: err.message})
     }
-  }
+  })
+}
 
 
 
@@ -100,6 +176,7 @@ module.exports = {
     createAluno,
     removeOneAluno,
     findByIdAlunos,
-    updateAnythingAluno
+    updateAnythingAluno,
+    login 
   
   }

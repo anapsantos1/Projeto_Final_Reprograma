@@ -8,6 +8,11 @@ const professorSchema = new mongoose.Schema({
   },
   email: {
     type: String,
+    match: /.+\@.+\..+/,
+    required: true
+  },
+  password:{
+    type: String,
     required: true
   },
   cidade: {

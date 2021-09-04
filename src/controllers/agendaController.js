@@ -2,15 +2,41 @@ const mongoose = require('mongoose')
 const Agenda = require('../models/agenda')
 const Aluno = require('../models/alunos')
 const Professor = require('../models/professores')
+//const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const SECRET = process.env.SECRET
 
 const getAll = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
   const agenda = await Agenda.find()
   .populate('professor')
   res.status(200).json(agenda)
+})
 }
 
 //Busca a agenda do aluno
 const findAgendaAluno = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
   try{
 
     const aluno = await Aluno.findById(req.params.id)
@@ -26,10 +52,22 @@ const findAgendaAluno = async (req, res) => {
 }catch (err){
   res.status(400).json({ message: err.message})
 }
+})
 }
 
 //Busca a agenda do professor
 const findAgendaProfessor = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
   try{
 
     const professor = await Professor.findById(req.params.id)
@@ -45,9 +83,22 @@ const findAgendaProfessor = async (req, res) => {
 }catch (err){
   res.status(400).json({ message: err.message})
 }
+})
 }
 
 const createAula = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
+  try {
   const agenda = new Agenda({
     _id: new mongoose.Types.ObjectId(),
     tema: req.body.tema,
@@ -57,12 +108,13 @@ const createAula = async (req, res) => {
     turma: req.body.turma
   })
 
-  try {
+  
     const novoAgenda = await agenda.save()
     res.status(201).json(novoAgenda)
   } catch (err) {
     res.status(400).json({ message: err.message})
   }
+})
 }
 
 //Criar um novo aluno na aula
@@ -96,6 +148,17 @@ const IncluirAluno = async (req, res) => {
 }
 
 const updateProfessor = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
   try{
     const aula = await Agenda.findById(req.params.id)
     if (aula == null){
@@ -113,9 +176,21 @@ const updateProfessor = async (req, res) => {
   }catch (err){
     res.status(500).json({message: err.message})
   }
+})
 }
 
 const removeOneAula = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
   try{
     const aula = await Agenda.findById(req.params.id)
  
@@ -130,6 +205,7 @@ const removeOneAula = async (req, res) => {
   catch (err){
     res.status(500).json({message: err.message})
   }
+})
 }
 
 

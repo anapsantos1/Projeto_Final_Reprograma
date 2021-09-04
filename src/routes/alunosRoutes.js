@@ -12,5 +12,6 @@ router.patch('/anything/:id', controller.updateAnythingAluno)
 
 router.delete('/:id', controller.removeOneAluno)
 
+router.post('/login', controller.login)
 
 module.exports = router
