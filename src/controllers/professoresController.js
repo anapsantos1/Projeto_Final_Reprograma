@@ -13,6 +13,7 @@ const createProfessor = async (req, res) => {
       _id: new mongoose.Types.ObjectId(),
       nome: req.body.nome,
       email: req.body.email,
+      password: req.body.password,
       cidade: req.body.cidade,
       graduadoEm: req.body.graduadoEm,
       disciplinas: req.body.disciplinas,
