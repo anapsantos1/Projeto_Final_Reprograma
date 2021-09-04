@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require("cors")
 
 //TODO:
 //conectar o db
 const db = require('./src/data/database')
 db.connect()
 //usar as rotas
+app.use(cors())
 app.use(express.json())
 
 const agendaRouter = require('./src/routes/agendaRoutes')
