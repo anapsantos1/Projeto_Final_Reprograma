@@ -9,7 +9,7 @@ Turma Online 12 - Todas em Tech | Back-end | 2021 |
 <center><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</center>	
 
 ### 1. **Qual o problema?**
-
+_______________________________________________________________________________
 A educação para Jovens e Adultos sempre foi um grande desafio, devido a vários fatores: escolas que não estão preparadas para atender esse público, não tem horário adequado e diversos problemas. Mesmo com todos os desafios muitas pessoas já em fase adulta procuram voltar aos estudos, e principalmente se adequarem as novas tecnologias que se renovam a cada dia nos setores organizacionais e pessoais.
 
 Pensando nesses publico e em todos os problemas que enfrentam foi desenvolvido o projeto não desista que foi criado com base no modelo Andragogico que se baseia nos seguintes princípios:
@@ -29,7 +29,7 @@ Pensando nesses publico e em todos os problemas que enfrentam foi desenvolvido o
 *Fonte: http://www.andragogiabrasil.com.br/artigos/premissas-andragogia*
 
 ### 2. **O que propõe o projeto?**
-
+_______________________________________________________________________________
 Criar uma comunidade para conectar Universitários e professores aposentados que gostariam de ensinar e auxiliar pessoas que voltaram a estudar na vida adulta.
 
 Esse projeto foi desenvolvimento para atender um público que cresce todos os dias no Brasil, pessoas que voltaram a estudar devido aos critérios de contratação das empresas que cada dia exigem mais qualificações. Pensando também nas metodologias de ensino das escolas que muitas vezes deixam a desejar.
@@ -50,7 +50,7 @@ Paulo Freire
 <center><img src="https://educacao.imaginie.com.br/wp-content/uploads/2020/12/Pagina-de-materiais-gratuitos.gif" alt="Educacão" style="zoom:50%;" />	</center>
 
 ### 3. Como vai funcionar?
-
+_______________________________________________________________________________
 O Projeto não desista é uma API RESTfull feita com a linguagen Javascript usando o node.js integrada com o banco de dados MongoDB. Está divida em 4 telas Aluno, Professor, Agenda e mural. A tela de aluno será usada para realização do cadastro do aluno, exclusão (obs.:Só será possível se o aluno não tiver aulas agendadas), alteração e na tela o professor pode visualizar todos os alunos cadastrados também.
 
 Na tela do professor será usada para realização do cadastro do professor, exclusões.:Só será possível se o professor não tiver aulas agendadas), alteração e os alunos também podem visualizar todos os professores cadastrados.
@@ -106,7 +106,6 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
    |         |- 📄 alunosRoutes.js
    |         |- 📄 professorRoutes.js
    |         |- 📄 muralRoutes.js
-   |    |- 📄 app.js 
    |
    |- 📄 .env
    |- 📄 .env.example
@@ -120,7 +119,7 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
 <br>
 
 ### 6. Documentação da API:
-
+_______________________________________________________________________________
 
 
 <img src="https://acegif.com/wp-content/uploads/cat-typing-24.gif" width="150">
@@ -167,15 +166,13 @@ Endpoint:{{URL}}agenda/
 
 Endpoint:{{URL}}mural/
 
-| Rota          | Método | O que faz?                    |
-| ------------- | ------ | ----------------------------- |
-| '/ '          | GET    | Busca todos os itens do mural |
-| '/depoimento' | POST   | Cadastrar um depoimento       |
-| '/indicacao'  | POST   | Cadastrar uma indicação       |
-|               |        |                               |
+| Rota | Método | O que faz?                    |
+| ---- | ------ | ----------------------------- |
+| '/ ' | GET    | Busca todos os itens do mural |
+| '/ ' | POST   | Cadastrar um depoimento       |
 
 ### 6.5 **Schemas**
-
+_______________________________________________________________________________
 **6.5.1** **Alunos**
 
 ```
@@ -186,6 +183,11 @@ const alunoSchema = new mongoose.Schema({
     required: true
   },
   email: {
+    type: String,
+    match: /.+\@.+\..+/,
+    required: true
+  },
+  password:{
     type: String,
     required: true
   },
@@ -225,6 +227,11 @@ const professorSchema = new mongoose.Schema({
     required: true
   },
   email: {
+    type: String,
+    match: /.+\@.+\..+/,
+    required: true
+  },
+  password:{
     type: String,
     required: true
   },
@@ -274,6 +281,7 @@ const agendaSchema = new mongoose.Schema({
     ref: 'professores'
   },
   turma : [{
+  
       nome: {
         type: String,
         required: true
@@ -282,7 +290,8 @@ const agendaSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-  }] 
+ 
+  }] ,
 
 })
 
@@ -293,7 +302,7 @@ const agendaSchema = new mongoose.Schema({
 **6.5.4** **Mural**
 
 ```
-const depoimentoSchema = new mongoose.Schema({
+const muralSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   nome: {
     type: String,
@@ -313,35 +322,42 @@ const depoimentoSchema = new mongoose.Schema({
 
 
 ### 7. Regras de negocio:
-
+_______________________________________________________________________________
 - [x]  Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado
 - [x]  Não deverá ser possível criar título com o mesmo nome
 - [x]  Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição
 - [ ]  Os alunos devem conseguir se incluir em uma aula 
 - [x]  Não deverá ser possível excluir um aluno que possuí uma aula agendada
 - [x]  Não deverá ser possível excluir um professor que possuí uma aula agendada
-- [ ]  O professor pode incluir um professor substituto
-- [ ]  As atualizações 
+- [x]  O professor pode incluir um professor substituto
+- [x]  É necessária a autenticação do token em todas as telas.
 
 <br>
 <br>
 
 ### 8. Implementações Futuras:
-
+_______________________________________________________________________________
 - Desenvolvimento da interface do site;
 - Envio de e-mail automático dos agendamentos;
 - Ampliar o projeto para atender todas as regiões do Brasil;
+- Identificar durante a autenticação se o token pertence a um professor ou de um aluno;
 - Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
 
+### 9. **Deseja Contribuir?**
+_______________________________________________________________________________
+1. Faça o download ou clone este repositório;
+2. Abra seu Terminal/Prompt e navegue até o diretório Projeto_Final_Reprograma;
+3. Rode: $ npm install;
+4. Para subir o servidor é só rodar $ npm run start.
 
+### 10. Autor  :woman_student:
+_______________________________________________________________________________
+##### Ana Paula Araújo
+
+-  [Linkedin](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
+-  [Github](https://github.com/anapsantos1?tab=repositories)
 
 ### Um pouquinho do resultado
 
 <img src="https://github.com/anapsantos1/ProjetoGuiado_On12_s14_Ana-Paula/blob/main/Anima%C3%A7%C3%A3o.gif?raw=true">
 
-
-_______________________________________________________________________________
-
-Aluna : [Ana Paula Lima](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
-
-Prof.: Simara Conceição
