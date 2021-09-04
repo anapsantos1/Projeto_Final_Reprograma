@@ -20,4 +20,6 @@ app.use('/professores', professoresRouter)
 const muralRouter = require('./src/routes/muralRoutes')
 app.use('/mural', muralRouter)
 
-app.listen(8080, () => console.log('listening on port 8080'))
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, () => console.log('listening on port 8080'))
