@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const depoimentoSchema = new mongoose.Schema({
+const muralSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   nome: {
     type: String,
@@ -16,4 +16,4 @@ const depoimentoSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('depoimentos', depoimentoSchema)
+module.exports = mongoose.model('Mural', muralSchema)

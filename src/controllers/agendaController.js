@@ -56,11 +56,7 @@ const createAula = async (req, res) => {
     professor: req.body.professor,
     turma: req.body.turma
   })
-  //TODO : criar validação se filme já existe
-  // const agendaJaExiste = await Agenda.findOne({tema: req.body.tema})
-  // if (agendaJaExiste) {
-  //   return res.status(409).json({error: 'Agenda ja cadastrado.'})
-  // }
+
   try {
     const novoAgenda = await agenda.save()
     res.status(201).json(novoAgenda)
@@ -70,28 +66,55 @@ const createAula = async (req, res) => {
 }
 
 //Criar um novo aluno na aula
-const createAluno = (req, res) => {
+const IncluirAluno = async (req, res) => {
+  try{
+    const aulaID = await Agenda.findById(req.params.id)
+    if (aulaID == null){
+      return res.status(404).json({message: "Aula não encontrado"})
+    }
+    //const updatedAluno = req.body
 
-  const agenda = Agenda.findById(req.params.id)
-  if (agenda == null){
-    return res.status(404).json({message: "Aluno  não encontrado"})
-  }
-  const turma = Agenda.turma;
-  const aluno = ({
-    nome: req.body.nome,
-    id: req.body.id,
+    const aluno = ({
+      nome: req.body.nome,
+      id: req.body.id,
+    })
+
+    Agenda.forEach((aula) => {
+      let sameAula = aula === aulaID;
+      if (sameAula){
+          Agenda.turma = aluno;
+      }
   })
-    const alunoJaExiste = aluno.findOne({nome: req.body.nome})
-  if (alunoJaExiste) {
-    return res.status(409).json({error: 'Aluno ja cadastrado.'})
-  }
-  try {
-    const novoAluno = aluno.save()
-    res.status(201).json(novoAluno)
-  } catch (err) {
-    res.status(400).json({ message: err.message})
+  res.status(201).send({"message": "Aluno adicionado com sucesso ", aulaID});
+    }
+
+
+  
+  catch (err){
+    res.status(500).json({message: err.message})
   }
 }
+
+const updateProfessor = async (req, res) => {
+  try{
+    const aula = await Agenda.findById(req.params.id)
+    if (aula == null){
+      return res.status(404).json({message: "Aula não encontrado"})
+    }
+
+    if (req.body.professor != null){
+      aula.professor = req.body.professor
+    }
+
+    const professorAtualizado = await aula.save()
+    
+    res.status(200).json({professorAtualizado})
+
+  }catch (err){
+    res.status(500).json({message: err.message})
+  }
+}
+
 const removeOneAula = async (req, res) => {
   try{
     const aula = await Agenda.findById(req.params.id)
@@ -114,10 +137,10 @@ const removeOneAula = async (req, res) => {
 module.exports = {
     getAll,
     createAula,
-    createAluno,
+    IncluirAluno,
     findAgendaAluno,
     findAgendaProfessor,
-    // updateAnythingProfessor,
+    updateProfessor,
     removeOneAula
     
   

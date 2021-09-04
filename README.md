@@ -1,30 +1,68 @@
-# On12-TodasEmTech-s14-ProjetoNãoéTarde-BD 🚀
+# Projeto Final - Reprograma 🚀
 
-Turma Online 12 - Todas em Tech | Back-end | 2021 | Semana 14: Projeto Guiado - CRUD com BD
+Turma Online 12 - Todas em Tech | Back-end | 2021 | 
 
 
 
-## Sobre o Projeto da semana
+## **Projeto não desista**
 
-community for senior students
+<center><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</center>	
 
-Esta aplicação é uma API para gerenciar dados de professores e alunos.
+### 1. **Qual o problema?**
 
-A idéia é criar uma comunidade para conectar pessoas que tem interesse em ensinar ou auxiliar pessoas que voltaram a estudar na vida adulta.
+A educação para Jovens e Adultos sempre foi um grande desafio, devido a vários fatores: escolas que não estão preparadas para atender esse público, não tem horário adequado e diversos problemas. Mesmo com todos os desafios muitas pessoas já em fase adulta procuram voltar aos estudos, e principalmente se adequarem as novas tecnologias que se renovam a cada dia nos setores organizacionais e pessoais.
+
+Pensando nesses publico e em todos os problemas que enfrentam foi desenvolvido o projeto não desista que foi criado com base no modelo Andragogico que se baseia nos seguintes princípios:
+
+**Necessidade de saber:** Adultos precisam saber porque precisam aprender algo e qual o ganho que terão no processo.
+
+**Autoconceito de aprendiz:** Adultos são responsáveis por suas decisões e por sua vida, portanto querem ser vistos e tratados como capazes de se autodirigir.
+
+**Papel das experiências:** Para o adulto suas experiências são a base do seu aprendizado. As técnicas que aproveitam essa amplitude de diferenças individuais serão mais eficazes.
+
+**Prontidão para aprender:** O adulto fica disposto a aprender quando a ocasião exige algum tipo de aprendizagem, relacionada a situações do seu dia a dia.
+
+**Orientação para a aprendizagem:** O adulto aprende melhor quando os conceitos apresentados estão contextualizados para alguma aplicação e utilidade.
+
+**Motivação:** Adultos são mais motivados a aprender por valores intrínsecos como autoestima, qualidade de vida, desenvolvimento, etc.
+
+*Fonte: http://www.andragogiabrasil.com.br/artigos/premissas-andragogia*
+
+### 2. **O que propõe o projeto?**
+
+Criar uma comunidade para conectar Universitários e professores aposentados que gostariam de ensinar e auxiliar pessoas que voltaram a estudar na vida adulta.
 
 Esse projeto foi desenvolvimento para atender um público que cresce todos os dias no Brasil, pessoas que voltaram a estudar devido aos critérios de contratação das empresas que cada dia exigem mais qualificações. Pensando também nas metodologias de ensino das escolas que muitas vezes deixam a desejar.
 
-Essas pessoas têm muita dificuldade em relembrar ou aprender novos assuntos e muitas vezes não tem o suporte necessário nas escolas.
+O projeto visa atender as necessidades do aluno , onde ele pode escolher o tema da aula expor sua dificuldades e combinar com o professor o melhor horário para as aulas.
 
-Tanto professores quantos alunos precisam se cadastrar
+Na aula pode ter outras pessoas que tem a mesma dificuldade, o professor vai encontrar a melhor forma de transmitir seu conhecimento usando fórmulas ou métodos mais modernos de resolver os exercícios e com situações do dia a dia.
+
+A comunidade também abre há oportunidade dos universitários vivenciar a realidade do ensino para adultos e usar as horas para cumprir o estágio obrigatório.
 
 ```
-"Relacionamento" no MongoDB? Como é isso?
-- ref no model
-- populate do find (eager loading)
+"Educação não transforma o mundo. Educação muda as pessoas. Pessoas transformam o mundo."
+Paulo Freire
 ```
 
-## Tecnologias usadas:
+
+
+<center><img src="https://educacao.imaginie.com.br/wp-content/uploads/2020/12/Pagina-de-materiais-gratuitos.gif" alt="Educacão" style="zoom:50%;" />	</center>
+
+### 3. Como vai funcionar?
+
+O Projeto não desista é uma API RESTfull feita com a linguagen Javascript usando o node.js integrada com o banco de dados MongoDB. Está divida em 4 telas Aluno, Professor, Agenda e mural. A tela de aluno será usada para realização do cadastro do aluno, exclusão (obs.:Só será possível se o aluno não tiver aulas agendadas), alteração e na tela o professor pode visualizar todos os alunos cadastrados também.
+
+Na tela do professor será usada para realização do cadastro do professor, exclusões.:Só será possível se o professor não tiver aulas agendadas), alteração e os alunos também podem visualizar todos os professores cadastrados.
+
+Agenda nesta tela o professor pode criar as aulas com os temas mais solicitados pelos alunos, ele também pode incluir os alunos na turma de acordo com a dificuldade informada. O aluno também pode incluir seu nome na aula caso não tenha sido incluído. O professor pode visualizar todas as aulas agendadas por ele e o aluno pode visualizar as aulas que esta cadastrado. O professor pode excluir a aula.
+
+O mural será um espaço onde alunos e professores vão postar vídeos de depoimentos positivos encorajadores, podem passar informações sobre universidades, cursos, sobre o vestibular e fazer indicação de livros.
+
+
+
+## 4. Tecnologias usadas:
+
 | Ferramenta | Descrição |
 | --- | --- |
 | `javascript` | Linguagem de programação |
@@ -41,10 +79,10 @@ Tanto professores quantos alunos precisam se cadastrar
 <br>
 <br>
 
-## 📁 Arquitetura 
+## 5. 📁 Arquitetura MVC
 
 ```
- 📁 FavMovies
+ 📁 naoDesista
    |
    |-  📁 src
    |    |
@@ -52,17 +90,23 @@ Tanto professores quantos alunos precisam se cadastrar
    |         |- 📄 database.js
    |
    |    |- 📁 controllers
-   |         |- 📄 tituloController.js
-   |         |- 📄 estudioController.js
+   |         |- 📄 agendaController.js
+   |         |- 📄 alunosController.js
+   |         |- 📄 professorController.js
+   |         |- 📄 muralController.js
    |
    |    |- 📁 models
-   |         |- 📄 titulo.js
-   |         |- 📄 estudio.js
+   |         |- 📄 agenda.js
+   |         |- 📄 alunos.js
+   |         |- 📄 mural.js
+   |         |- 📄 professores.js
    |
    |    |- 📁 routes
-   |         |- 📄 tituloRoutes.js 
-   |         |- 📄 estudioRoutes.js 
-   |
+   |         |- 📄 agendaRoutes.js
+   |         |- 📄 alunosRoutes.js
+   |         |- 📄 professorRoutes.js
+   |         |- 📄 muralRoutes.js
+   |    |- 📄 app.js 
    |
    |- 📄 .env
    |- 📄 .env.example
@@ -75,280 +119,221 @@ Tanto professores quantos alunos precisam se cadastrar
 <br>
 <br>
 
-### Regras de negocio:
+### 6. Documentação da API:
 
 
 
 <img src="https://acegif.com/wp-content/uploads/cat-typing-24.gif" width="150">
 
-- [x] **"/estudantes/"** Deverá retornar todos os alunos
+**6.1** **Rotas de aluno**
 
-- [x] **"/estudantes/cadastro"** Deverá criar um aluno. O aluno não pode ter mais de um cadastro
+Endpoint: {{URL}}aluno/
 
-- [x] **"/estudantes/:id"** Deverá buscar um aluno por id
+| Rota            | Método | O que faz?                                      |
+| --------------- | ------ | ----------------------------------------------- |
+| '/ '            | GET    | Busca todos os alunos                           |
+| '/cadastro'     | POST   | Cadastro do aluno                               |
+| '/:id'          | GET    | Busca o aluno por ID                            |
+| '/anything/:id' | PATCH  | O aluno pode alterar qualquer dados do cadastro |
+| '/:id'          | DELETE | O aluno pode excluir o cadastro                 |
 
-- [x] **"/estudantes/:id"** Deverá alterar qualquer informação do cadastro
+**6.2** **Rotas de Professor**
 
+Endpoint: {{URL}}professor/
 
+| Rota            | Método | O que faz?                                          |
+| --------------- | ------ | --------------------------------------------------- |
+| '/ '            | GET    | Busca todos os professores                          |
+| '/cadastro'     | POST   | Cadastro do professor                               |
+| '/:id'          | GET    | Busca o professor por ID                            |
+| '/anything/:id' | PATCH  | O professor pode alterar qualquer dados do cadastro |
+| '/:id'          | DELETE | O professor pode excluir o cadastro                 |
 
-  ```
-  const getAllMarvel = async (req, res) => {
-    const titulos = await Titulo.find().populate('estudio')
-    const titulosFiltrados = titulos.filter(titulo => titulo.estudio.nome = "Marvel")
-    res.json(titulosFiltrados)
-  }
-  ```
+**6.3** **Rotas da Agenda**
 
-- [x] **"/titulos/ghibli"** Deverá retornar todos os títulos com o estúdio Ghibli
+Endpoint:{{URL}}agenda/
 
-  ```
-  const getAllGhibli = async (req, res) => {
-    const titulos = await Titulo.find().populate('estudio')
-    const titulosFiltrados = titulos.filter(titulo => titulo.estudio.nome = "Ghibli")
-    res.json(titulosFiltrados)
-  }
-  ```
+| Rota             | Método | O que faz?                                                  |
+| ---------------- | ------ | ----------------------------------------------------------- |
+| '/ '             | GET    | Busca todas as aulas agendadas                              |
+| '/aula'          | POST   | Cadastrar uma aula                                          |
+| '/aula/:id'      | PATCH  | Incluir um aluno em uma aula existente                      |
+| '/aluno/:id'     | GET    | Busca todas as aula que o ID do aluno está cadastrado.      |
+| '/professor/:id' | GET    | Busca todas as aula que o ID do professor está cadastrado.  |
+| '/:id'           | PUT    | O ID do professor pode ser pelo ID do professor substituto. |
+| '/:id'           | DELETE | Excluir a aula.                                             |
 
-- [x] **"/titulos/pixar"** Deverá retornar todos os títulos com o estúdio Pixar
+**6.4** **Rotas da Mural**
 
-  ```
-  const getAllPixar = async (req, res) =>{
-  const titulos = await Titulo.find().populate('estudio')
-  const titulosFiltrados = titulos.filter(titulo => titulo.estudio.nome == "Pixar")
-  res.json(titulosFiltrados)
-  }
-  ```
+Endpoint:{{URL}}mural/
 
-- [x] **"/estudios"** Deverá retornar todos os estúdios cadastrados
+| Rota          | Método | O que faz?                    |
+| ------------- | ------ | ----------------------------- |
+| '/ '          | GET    | Busca todos os itens do mural |
+| '/depoimento' | POST   | Cadastrar um depoimento       |
+| '/indicacao'  | POST   | Cadastrar uma indicação       |
+|               |        |                               |
 
-  ```
-  const getAll = async (req, res) => {
-    const estudios = await Estudio.find()
-    res.status(200).json(estudios)
-  }
-  ```
+### 6.5 **Schemas**
 
-- [x] "**/titulos**" Deverá retornar todos os títulos cadastrados, cada um fazendo referencia ao seu respectivo estúdio
+**6.5.1** **Alunos**
 
-  ```
-  const getAll = async (req, res) => {
-    const titulos = await Titulo.find().populate('estudio')
-    res.status(200).json(titulos)
-  }
-  ```
-
-- [x] "**/estudios**" Deverá criar um estúdio 
-
-  ```
-  const createStudio = async (req, res) => {
-    const estudio = new Estudio({
-      _id: new mongoose.Types.ObjectId(),
-      nome: req.body.nome,
-      criadoEm: req.body.criadoEm,
-    })
-    const estudioJaExiste = await Estudio.findOne({nome: req.body.nome})
-    if (estudioJaExiste) {
-      return res.status(409).json({error: 'Estudio ja cadastrado.'})
-    }
-    try{
-      const novoEstudio = await estudio.save()
-      res.status(201).json(novoEstudio)
-    } catch(err) {
-      res.status(400).json({ message: err.message})
-    }
-  }
-  ```
-
-- [x] "**/titulos**"  Deverá criar um título 
-
-  ```
-  const createTitle = async (req, res) => {
-    const titulo = new Titulo({
-      _id: new mongoose.Types.ObjectId(),
-      nome: req.body.nome,
-      genero: req.body.genero,
-      descricao: req.body.descricao,
-      estudio: req.body.estudio,
-      criadoEm: req.body.criadoEm
-    })
-    //TODO : criar validação se filme já existe
-    const tituloJaExiste = await Titulo.findOne({nome: req.body.nome})
-    if (tituloJaExiste) {
-      return res.status(409).json({error: 'Titulo ja cadastrado.'})
-    }
-    try {
-      const novoTitulo = await titulo.save()
-      res.status(201).json(novoTitulo)
-    } catch (err) {
-      res.status(400).json({ message: err.message})
-    }
-  }
-  ```
-
-- [x] "**/titulos/[ID]**" Deverá deletar titulo por id específico e retorna mensagem amigável
-
-  ```
-  const removeOneTitulo = async (req, res) => {
-    try{
-      const titulo = await Titulo.findById(req.params.id)
-      if (titulo == null){
-        return res.status(404).json({message: "Titulo  não encontrado"})
-      }
-      titulo.remove()
-      res.status(200).json({"mensagem":"Titulo removido com sucesso"})
-  
-    }catch (err){
-      res.status(500).json({message: err.message})
-    }
-  }
-  ```
-
-- [x] "**/estudios/[ID]**" Deverá deletar estúdio por id específico e retorna mensagem amigável
-
-  ```
-  const removeOneEstudio = async (req, res) => {
-    try{
-      const estudio = await Estudio.findById(req.params.id)
-      if (estudio == null){
-        return res.status(404).json({message: "Estudio  não encontrado"})
-      }
-      estudio.remove()
-      res.status(200).json({"mensagem":"Estudio removido com sucesso"})
-  
-    }catch (err){
-      res.status(500).json({message: err.message})
-    }
-  }
-  ```
-
-- [x] "**/titulos/[ID]**" Deverá alterar informação específica dentro de um titulo por id específico e retorna o título alterado
-
-  ```
-  const updateAnythingTitulo = async (req, res) => {
-    try{
-      const titulo = await Titulo.findById(req.params.id)
-      if (titulo == null){
-        return res.status(404).json({message: "Titulo não encontrado"})
-      }
-      const updatedTitulo = req.body
-  
-      if (updatedTitulo != null){
-  
-        let keyList = Object.keys(updatedTitulo)
-        keyList.forEach((conteudo) => {
-          console.log('chave', conteudo);
-          titulo[conteudo] = updatedTitulo[conteudo];
-      });
-      
-      }
-      const tituloAtualizado = await titulo.save()
-      res.status(200).json({tituloAtualizado})
-  
-  
-    }
-    catch (err){
-      res.status(500).json({message: err.message})
-    }
-  }
-  ```
-
-- [x] "**/estudios/[ID]**" Deverá alterar informação específica dentro de um estúdio por id específico e retorna o título alterado
-
-  ```
-  const updateOne = async (req, res) => {
-    try{
-      const estudio = await Estudio.findById(req.params.id)
-      if (estudio == null){
-        return res.status(404).json({message: "Estudio  não encontrado"})
-      }
-  
-      if (req.body.nome != null){
-        estudio.nome = req.body.nome
-      }
-  
-      const estudioAtualizado = await estudio.save()
-      res.status(200).json({estudioAtualizado})
-  
-    }catch (err){
-      res.status(500).json({message: err.message})
-    }
-  }
-  ```
-
-
-### Regras de negócio
-
-- [x]  Não deverá ser possível criar estúdio com o mesmo nome
-- [x]  Não deverá ser possível criar título com o mesmo nome
-- [x]  Para criar um novo título, deverá vincular no momento da criação a um estúdio já existente no sistema, utilizando o numero do id do estúdio correspondente no corpo da requisição
-
-<br>
-<br>
-
-### Dados para Collection Estudios
-
-- id: autogerado e obrigatório
-- nome: texto e obrigatório
-- criadoEm: data gerada automaticamente e obrigatório
-
-
-### API deve retornar seguinte JSON:
-
-```jsx
-[
-    {
-    "criadoEm": "2021-06-05T01:27:40.886Z",
-    "_id": "60bad38c8c299c285d2685e7",
-    "nome": "Marvel",
-    "__v": 0
-    },
-    {
-    "criadoEm": "2021-06-05T01:27:40.886Z",
-    "_id": "60bad33d8c299c285d2685e5",
-    "nome": "Ghibli",
-    "__v": 0
+```
+const alunoSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  nome: {
+    type: String,
+    required: true
   },
-  {
-    "criadoEm": "2021-06-05T01:27:40.886Z",
-    "_id": "60bad33d8c299c285d2685e5",
-    "nome": "Pixar",
-    "__v": 0
+  email: {
+    type: String,
+    required: true
+  },
+  cidade: {
+    type: String,
+    required: true
+  },
+  disciplinas: {
+    type: String,
+    required: true
+  },
+  duvidas: {
+    type: String,
+    required: true
+  },
+  cursando: {
+    type: String,
+    required: true
+  },
+  criadoEm: {
+    type: Date,
+    required: true,
+    default: new Date
   }
-]
+})
 ```
-<br>
-<br>
-
-### Dados para Collection Titulos
-
-- id: autogerado e obrigatório
-- nome: texto e obrigatório
-- genero: texto e obrigatório
-- descricao: texto e obrigatório
-- criadoEm: data gerada automaticamente e obrigatório
-- estudio: referencia do estudio cadastrado previamente obrigatório
 
 
-### API deve retornar seguinte JSON:
 
-```jsx
-[
-  {
-    "criadoEm": "2021-06-05T01:27:40.892Z",
-    "_id": "60bad3568c299c285d2685e6",
-    "nome": "Spirited Away",
-    "genero": "romance",
-    "descricao": "SPIRITED AWAY é uma fantasia maravilhosa sobre uma jovem garota, Chihiro, presa em um estranho mundo novo de espíritos. Quando seus pais passam por uma transformação misteriosa, ela deve invocar a coragem que ela nunca soube que tinha para se libertar e retornar sua família para o mundo exterior. Uma história inesquecível e cheia de criatividade, SPIRITED AWAY o levará em uma jornada além da sua imaginação.",
-    "estudio": {
-      "criadoEm": "2021-06-05T01:27:40.886Z",
-      "_id": "60bad33d8c299c285d2685e5",
-      "nome": "Ghibli",
-    }
+**6.5.2** **Professor**
+
+```
+const professorSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  nome: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  cidade: {
+    type: String,
+    required: true
+  },
+  graduadoEm: {
+    type: String,
+    required: true
+  },
+  disciplinas: {
+    type: String,
+    required: true
+  },
+  criadoEm: {
+    type: Date,
+    required: true,
+    default: new Date
   }
-]
+})
 ```
+
+
+
+**6.5.3** **Agenda**
+
+```
+const agendaSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  tema: {
+    type: String,
+    required: true
+  },
+  criadoEm: {
+    type: Date,
+    required: true,
+    default: new Date
+  },
+  descricao: {
+    type: String,
+    required: true
+  },
+  professor: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'professores'
+  },
+  turma : [{
+      nome: {
+        type: String,
+        required: true
+      },
+      id: {
+        type: String,
+        required: true
+      },
+  }] 
+
+})
+
+```
+
+
+
+**6.5.4** **Mural**
+
+```
+const depoimentoSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  nome: {
+    type: String,
+    required: true
+  },
+  url_do_video: {
+    type: String,
+    required: true
+  },
+  descricao: {
+    type: String,
+    required: true
+  }
+})
+```
+
+
+
+### 7. Regras de negocio:
+
+- [x]  Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado
+- [x]  Não deverá ser possível criar título com o mesmo nome
+- [x]  Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição
+- [ ]  Os alunos devem conseguir se incluir em uma aula 
+- [x]  Não deverá ser possível excluir um aluno que possuí uma aula agendada
+- [x]  Não deverá ser possível excluir um professor que possuí uma aula agendada
+- [ ]  O professor pode incluir um professor substituto
+- [ ]  As atualizações 
+
 <br>
 <br>
+
+### 8. Implementações Futuras:
+
+- Desenvolvimento da interface do site;
+- Envio de e-mail automático dos agendamentos;
+- Ampliar o projeto para atender todas as regiões do Brasil;
+- Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
+
+
 
 ### Um pouquinho do resultado
 

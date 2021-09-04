@@ -20,7 +20,7 @@ const createAluno = async (req, res) => {
       criadoEm: req.body.criadoEm
     })
     //TODO : criar validação se filme já existe
-    const alunoJaExiste = await Aluno.findOne({nome: req.body.nome})
+    const alunoJaExiste = await Aluno.findOne({email: req.body.email})
     if (alunoJaExiste) {
       return res.status(409).json({error: 'Aluno ja cadastrado.'})
     }

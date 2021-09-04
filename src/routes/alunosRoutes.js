@@ -4,17 +4,12 @@ const controller = require('../controllers/alunosController')
 
 router.get('/', controller.getAll)
 
-// // //criar um novo titulo/post/save
 router.post('/cadastro', controller.createAluno)
 
-// //listar um titulo/get/findById
 router.get('/:id', controller.findByIdAlunos)
 
-// //atualizar uma informacao especifica num titulo/patch/findById/save
-// router.put('/:id', controller.updateOneStudent)
 router.patch('/anything/:id', controller.updateAnythingAluno)
 
-// //deletar um titulo/delete/findById/remove
 router.delete('/:id', controller.removeOneAluno)
 
 

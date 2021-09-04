@@ -17,4 +17,7 @@ app.use('/estudantes', estudantesRouter)
 const professoresRouter = require('./src/routes/professoresRoutes')
 app.use('/professores', professoresRouter)
 
+const muralRouter = require('./src/routes/muralRoutes')
+app.use('/mural', muralRouter)
+
 app.listen(8080, () => console.log('listening on port 8080'))

@@ -5,20 +5,15 @@ const controller = require('../controllers/agendaController')
 
 router.get('/', controller.getAll)
 
-// //criar um novo titulo/post/save
 router.post('/aula', controller.createAula)
 
-router.post('/aula/:id', controller.createAluno)
+router.patch('/aula/:id', controller.IncluirAluno)
 
-//listar um titulo/get/findById
 router.get('/:id', controller.findAgendaAluno)
 router.get('/professor/:id', controller.findAgendaProfessor)
 
-// //atualizar uma informacao especifica num titulo/patch/findById/save
-// router.put('/:id', controller.updateOneSchedule)
-// router.patch('/anything/:id', controller.updateAnythingSchedule)
+router.put('/aula/professor/:id', controller.updateProfessor)
 
-// //deletar um titulo/delete/findById/remove
 router.delete('/:id', controller.removeOneAula)
 
 
