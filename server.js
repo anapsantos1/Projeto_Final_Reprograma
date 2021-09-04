@@ -16,6 +16,9 @@ app.use('/agenda', agendaRouter)
 const estudantesRouter = require('./src/routes/alunosRoutes')
 app.use('/estudantes', estudantesRouter)
 
+const indexRouter = require('./src/routes/index')
+app.use("/", indexRouter)
+
 const professoresRouter = require('./src/routes/professoresRoutes')
 app.use('/professores', professoresRouter)
 
