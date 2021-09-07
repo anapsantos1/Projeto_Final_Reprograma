@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
     }
   const agenda = await Agenda.find()
   .populate('professor')
-  //.populate('alunos')
+  .populate('turma')
   res.status(200).json(agenda)
 })
 }
@@ -113,7 +113,7 @@ const createAula = async (req, res) => {
   })
 
   
-    const novoAgenda = await agenda.save().populate('alunos')
+    const novoAgenda = await agenda.save()
     res.status(201).json(novoAgenda)
   } catch (err) {
     res.status(400).json({ message: err.message})
