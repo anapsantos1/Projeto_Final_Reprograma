@@ -20,7 +20,7 @@ const agendaSchema = new mongoose.Schema({
     required: true,
     ref: 'professores'
   },
-  turma : [{
+  alunos : [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'alunos'
   }] ,
