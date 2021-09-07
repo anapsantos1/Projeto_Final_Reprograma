@@ -132,6 +132,7 @@ const IncluirAluno = async (req, res) => {
       aulaID,
       { $push: { alunos: req.body.id } },
       { new: true, useFindAndModify: false })
+      Agenda.populate("alunos")
 
       //populate("alunos")
 
