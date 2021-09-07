@@ -35,7 +35,7 @@ const findAgendaAluno = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -47,6 +47,7 @@ const findAgendaAluno = async (req, res) => {
     }
     const aulaAgendada = await Agenda.find({"id": aluno})
     .populate('professor')
+    .populate('alunos')
     if (aulaAgendada == null){
       return res.status(404).json({message: "Nenhuma aula agendada"})
     }
@@ -66,7 +67,7 @@ const findAgendaProfessor = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -78,6 +79,7 @@ const findAgendaProfessor = async (req, res) => {
     }
     const aulaAgendada = await Agenda.find({"professor": professor})
     .populate('professor')
+    .populate('alunos')
     if (aulaAgendada == null){
       return res.status(404).json({message: "Nenhuma aula agendada"})
     }
@@ -96,7 +98,7 @@ const createAula = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -156,7 +158,7 @@ const updateProfessor = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -188,7 +190,7 @@ const removeOneAula = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }

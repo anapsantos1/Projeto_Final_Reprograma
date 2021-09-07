@@ -4,6 +4,7 @@ const Agenda = require('../models/agenda')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const SECRET_PROFESSOR = process.env.SECRET_PROFESSOR
+const SECRET_ALUNO = process.env.SECRET_ALUNO
 
 
 const createProfessor = async (req, res) => {
@@ -61,7 +62,7 @@ const getAll = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_ALUNO, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -78,7 +79,7 @@ const getAll = async (req, res) => {
       return res.status(403).send({message: "Kd a autorizationnn"})
     }
   
-    jwt.verify(token, SECRET, async (err) => {
+    jwt.verify(token, SECRET_PROFESSOR, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
       }
@@ -105,7 +106,7 @@ const getAll = async (req, res) => {
       return res.status(403).send({message: "Kd a autorizationnn"})
     }
   
-    jwt.verify(token, SECRET, async (err) => {
+    jwt.verify(token, SECRET_PROFESSOR, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
       }
@@ -143,7 +144,7 @@ const getAll = async (req, res) => {
       return res.status(403).send({message: "Kd a autorizationnn"})
     }
   
-    jwt.verify(token, SECRET, async (err) => {
+    jwt.verify(token, SECRET_PROFESSOR, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
       }
