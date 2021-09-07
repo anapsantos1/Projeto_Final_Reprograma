@@ -21,16 +21,8 @@ const agendaSchema = new mongoose.Schema({
     ref: 'professores'
   },
   turma : [{
-  
-      nome: {
-        type: String,
-        required: true
-      },
-      id: {
-        type: String,
-        required: true
-      },
- 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'alunos'
   }] ,
 
 })

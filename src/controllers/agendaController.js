@@ -123,21 +123,14 @@ const IncluirAluno = async (req, res) => {
     const aulaID = await Agenda.findById(req.params.id)
     if (aulaID == null){
       return res.status(404).json({message: "Aula não encontrado"})
+    }else{
+    const alunoID = await Aluno.find({ _id: req.body.id }).populate("alunos")
+
+    Agenda.save(alunoID)
+
+      res.status(201).send({"message": "Aluno adicionado com sucesso ", aulaID});
     }
-    //const updatedAluno = req.body
-
-    const aluno = ({
-      nome: req.body.nome,
-      id: req.body.id,
-    })
-
-    Agenda.forEach((aula) => {
-      let sameAula = aula === aulaID;
-      if (sameAula){
-          Agenda.turma = aluno;
-      }
-  })
-  res.status(201).send({"message": "Aluno adicionado com sucesso ", aulaID});
+  
     }
 
 
@@ -150,7 +143,7 @@ const IncluirAluno = async (req, res) => {
 const updateProfessor = async (req, res) => {
   const authHeader = req.get('Authorization');
   const token = authHeader.split(' ')[1]
-  console.log(token)
+  
   if (!token) {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }

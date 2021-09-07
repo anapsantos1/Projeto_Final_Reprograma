@@ -48,7 +48,7 @@ const createProfessor = async (req, res) => {
       }
       console.log(senhaValida)
   
-      const token = jwt.sign({email: req.body.email}, SECRET)
+      const token = jwt.sign({email: req.body.email}, SECRET_PROFESSOR)
       res.status(200).send({ messagem: "Login realizado com sucesso", token: token})
   })
 }
