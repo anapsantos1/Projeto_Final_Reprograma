@@ -198,11 +198,13 @@ const removeOneAula = async (req, res) => {
     const aula = await Agenda.findById(req.params.id)
  
     if (aula == null){
-      return res.status(404).json({message: "Professor  não encontrado"})
+      return res.status(404).json({message: "Aula não encontrado"})
+    }else{
+      aula.remove()
+      res.status(200).json({"mensagem":"Aula removido com sucesso"})
     }
     
-    aula.remove()
-    res.status(200).json({"mensagem":"Professor removido com sucesso"})
+
     }
 
   catch (err){
