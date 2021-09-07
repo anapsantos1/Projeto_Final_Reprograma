@@ -25,13 +25,14 @@ const createAluno = async (req, res) => {
     const alunoJaExiste = await Aluno.findOne({email: req.body.email})
     if (alunoJaExiste) {
       return res.status(409).json({error: 'Aluno ja cadastrado.'})
-    }
+    }else{
     try {
       const novoAluna = await aluno.save()
       res.status(201).json(novoAluna)
     } catch (err) {
       res.status(400).json({ message: err.message})
     }
+  }
   }
 
   const login = (req, res) => {
@@ -57,7 +58,6 @@ const createAluno = async (req, res) => {
 const getAll = async (req, res) => {
   const authHeader = req.get('Authorization');
   const token = authHeader.split(' ')[1]
-  console.log(token)
   if (!token) {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
@@ -84,19 +84,20 @@ const getAll = async (req, res) => {
     jwt.verify(token, SECRET_ALUNO, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
-      }
-    try{
-  
-      const  idRequerido = req.params.id
-  
-      const aluno = await Aluno.findById(idRequerido)
-      if (aluno == null){
-        return res.status(404).json({message: "Estudio  não encontrado"})
-      }
-      res.status(200).json({aluno})
-  }catch (err){
-    res.status(400).json({ message: err.message})
-  }
+      }else{
+          try{
+        
+            const  idRequerido = req.params.id
+        
+            const aluno = await Aluno.findById(idRequerido)
+            if (aluno == null){
+              return res.status(404).json({message: "Estudio  não encontrado"})
+            }
+            res.status(200).json({aluno})
+          }catch (err){
+            res.status(400).json({ message: err.message})
+        }
+    }
   })
 }
 
@@ -111,31 +112,32 @@ const getAll = async (req, res) => {
     jwt.verify(token, SECRET_ALUNO, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
+      }else{
+          try{
+            const aluno = await Aluno.findById(req.params.id)
+            if (aluno == null){
+              return res.status(404).json({message: "Titulo não encontrado"})
+            }
+            const updatedAluno = req.body
+        
+            if (updatedAluno != null){
+        
+              let keyList = Object.keys(updatedAluno)
+              keyList.forEach((conteudo) => {
+                console.log('chave', conteudo);
+                aluno[conteudo] = updatedAluno[conteudo];
+            });
+            
+            }
+            const alunoAtualizado = await aluno.save()
+            res.status(200).json({alunoAtualizado})
+        
+        
+          }
+          catch (err){
+            res.status(500).json({message: err.message})
+          }
       }
-    try{
-      const aluno = await Aluno.findById(req.params.id)
-      if (aluno == null){
-        return res.status(404).json({message: "Titulo não encontrado"})
-      }
-      const updatedAluno = req.body
-  
-      if (updatedAluno != null){
-  
-        let keyList = Object.keys(updatedAluno)
-        keyList.forEach((conteudo) => {
-          console.log('chave', conteudo);
-          aluno[conteudo] = updatedAluno[conteudo];
-      });
-      
-      }
-      const alunoAtualizado = await aluno.save()
-      res.status(200).json({alunoAtualizado})
-  
-  
-    }
-    catch (err){
-      res.status(500).json({message: err.message})
-    }
   })
 }
 
@@ -150,23 +152,24 @@ const getAll = async (req, res) => {
     jwt.verify(token, SECRET_ALUNO, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
-      }
-    try{
-      const aluno = await Aluno.findById(req.params.id)
-      if (aluno == null){
-        return res.status(404).json({message: "Aluno  não encontrado"})
-      }
-      const aulaAgendada = await Agenda.findOne({"id": aluno})
-      if(aulaAgendada){
-        res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
       }else{
-      aluno.remove()
-      res.status(200).json({"mensagem":"Aluno removido com sucesso"})
+          try{
+            const aluno = await Aluno.findById(req.params.id)
+            if (aluno == null){
+              return res.status(404).json({message: "Aluno  não encontrado"})
+            }
+            const aulaAgendada = await Agenda.findOne({"id": aluno})
+            if(aulaAgendada){
+              res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
+            }else{
+            aluno.remove()
+            res.status(200).json({"mensagem":"Aluno removido com sucesso"})
+            }
+        
+          }catch (err){
+            res.status(500).json({message: err.message})
+          }
       }
-  
-    }catch (err){
-      res.status(500).json({message: err.message})
-    }
   })
 }
 

@@ -33,20 +33,21 @@ const getAll = async (req, res) => {
     jwt.verify(token, SECRET_ALUNO, SECRET_PROFESSOR, async (err) => {
       if (err){
         res.status(403).send({message: '  token não valido', err})
-      }
-    try {
-      const mural = new Mural({
-        _id: new mongoose.Types.ObjectId(),
-        nome: req.body.nome,
-        url_do_video: req.body.url_do_video,
-        descricao: req.body.descricao
+      }else{
+        try {
+          const mural = new Mural({
+            _id: new mongoose.Types.ObjectId(),
+            nome: req.body.nome,
+            url_do_video: req.body.url_do_video,
+            descricao: req.body.descricao
 
-      })
-        const novoRecado = await mural.save()
-        res.status(201).json(novoRecado)
-      } catch (err) {
-        res.status(400).json({ message: err.message})
-      }
+          })
+            const novoRecado = await mural.save()
+            res.status(201).json(novoRecado)
+          } catch (err) {
+            res.status(400).json({ message: err.message})
+          }
+       }
     })
   }
 
