@@ -124,7 +124,7 @@ const IncluirAluno = async (req, res) => {
     if (aulaID == null){
       return res.status(404).json({message: "Aula não encontrado"})
     }else{
-    const alunoID = await Aluno.find({ _id: req.body.id }).populate("alunos")
+    const alunoID = await Aluno.find({ id: req.body.id }).populate("alunos")
 
     Agenda.save(alunoID)
 
