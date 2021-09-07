@@ -124,9 +124,14 @@ const IncluirAluno = async (req, res) => {
     if (aulaID == null){
       return res.status(404).json({message: "Aula não encontrado"})
     }else{
-    const alunoID = await Agenda.find({aulaID}).populate("alunos")
+    //const alunoID = await Agenda.find({aulaID})
 
-    Agenda.save(alunoID)
+      Agenda.findByIdAndUpdate(
+      aulaId,
+      { $push: { alunos: req.bory.id } },
+      { new: true, useFindAndModify: false })
+
+      //populate("alunos")
 
       res.status(201).send({"message": "Aluno adicionado com sucesso ", aulaID});
     }
