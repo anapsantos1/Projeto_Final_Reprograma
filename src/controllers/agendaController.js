@@ -46,7 +46,6 @@ const findAgendaAluno = async (req, res) => {
           }
           const aulaAgendada = await Agenda.find({"id": aluno})
           .populate('professor')
-          .populate('alunos')
           if (aulaAgendada == null){
             return res.status(404).json({message: "Nenhuma aula agendada"})
           }
@@ -79,7 +78,6 @@ const findAgendaProfessor = async (req, res) => {
           }
           const aulaAgendada = await Agenda.find({"professor": professor})
           .populate('professor')
-          .populate('alunos')
           if (aulaAgendada == null){
             return res.status(404).json({message: "Nenhuma aula agendada"})
           }
