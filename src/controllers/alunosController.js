@@ -61,7 +61,7 @@ const getAll = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
