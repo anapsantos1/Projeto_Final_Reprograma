@@ -109,7 +109,7 @@ const createAula = async (req, res) => {
     criadoEm: req.body.criadoEm,
     descricao: req.body.descricao,
     professor: req.body.professor,
-    turma: [{type: req.body.type}]
+    turma: req.body.turma
   })
 
   
