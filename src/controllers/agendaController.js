@@ -21,7 +21,7 @@ const getAll = async (req, res) => {
     }
   const agenda = await Agenda.find()
   .populate('professor')
-  .populate('alunos')
+  //.populate('alunos')
   res.status(200).json(agenda)
 })
 }
