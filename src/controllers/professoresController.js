@@ -3,7 +3,7 @@ const Professor = require('../models/professores')
 const Agenda = require('../models/agenda')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET = process.env.SECRET
+const SECRET_PROFESSOR = process.env.SECRET_PROFESSOR
 
 
 const createProfessor = async (req, res) => {

@@ -3,7 +3,7 @@ const Aluno = require('../models/alunos')
 const Agenda = require('../models/agenda')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET = process.env.SECRET
+const SECRET_ALUNO = process.env.SECRET_ALUNO
 
 
 const createAluno = async (req, res) => {
