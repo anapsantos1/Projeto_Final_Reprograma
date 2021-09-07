@@ -20,6 +20,7 @@ const getAll = async (req, res) => {
     }
   const agenda = await Agenda.find()
   .populate('professor')
+  .populate('alunos')
   res.status(200).json(agenda)
 })
 }
@@ -127,7 +128,7 @@ const IncluirAluno = async (req, res) => {
     //const alunoID = await Agenda.find({aulaID})
 
       Agenda.findByIdAndUpdate(
-      aulaId,
+      aulaID,
       { $push: { alunos: req.bory.id } },
       { new: true, useFindAndModify: false })
 
