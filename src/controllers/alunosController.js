@@ -154,11 +154,13 @@ const getAll = async (req, res) => {
         res.status(403).send({message: '  token não valido', err})
       }else{
           try{
+            
             const aluno = await Aluno.findById(req.params.id)
             if (aluno == null){
               return res.status(404).json({message: "Aluno  não encontrado"})
             }else{
-              const aulaAgendada = await Agenda.findOne({"id": aluno})
+              
+            const aulaAgendada = await Agenda.findOne({"id": aluno})
               if(aulaAgendada){
                 res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
               }else{
