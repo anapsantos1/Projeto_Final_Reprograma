@@ -101,7 +101,7 @@ const createAula = async (req, res) => {
   jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
-    }
+    }else{
   try {
   const agenda = new Agenda({
     _id: new mongoose.Types.ObjectId(),
@@ -109,15 +109,16 @@ const createAula = async (req, res) => {
     criadoEm: req.body.criadoEm,
     descricao: req.body.descricao,
     professor: req.body.professor,
-    turma: req.body.turma
+    turma: [{id: req.body.id}]
   })
 
   
-    const novoAgenda = await agenda.save()
+    const novoAgenda = await agenda.save().populate('alunos')
     res.status(201).json(novoAgenda)
   } catch (err) {
     res.status(400).json({ message: err.message})
   }
+}
 })
 }
 
@@ -193,15 +194,15 @@ const removeOneAula = async (req, res) => {
   jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
-    }
+    }else{
   try{
     const aula = await Agenda.findById(req.params.id)
  
-    if (aula == null){
-      return res.status(404).json({message: "Aula não encontrado"})
-    }else{
-      aula.remove()
-      res.status(200).json({"mensagem":"Aula removido com sucesso"})
+      if (aula == null){
+         return res.status(404).json({message: "Aula não encontrado"})
+      }else{
+         aula.remove()
+         res.status(200).json({"mensagem":"Aula removido com sucesso"})
     }
     
 
@@ -210,6 +211,7 @@ const removeOneAula = async (req, res) => {
   catch (err){
     res.status(500).json({message: err.message})
   }
+}
 })
 }
 
