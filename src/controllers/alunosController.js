@@ -156,20 +156,18 @@ const getAll = async (req, res) => {
           try{
             
             const aluno = await Aluno.findById(req.params.id)
-            const aulaAgendada = await Agenda.findOne({id: req.params.id })
+            
             if (aluno == null){
               return res.status(404).json({message: "Aluno  não encontrado"})
-            }else{
-
-            console.log(aulaAgendada)
-              if(aulaAgendada){
+            } 
+            const aulaAgendada = await Agenda.findOne({id: req.params.id })
+            if(aulaAgendada){
                 res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
-              }
-              else{
+              }else{
               aluno.remove()
               res.status(200).json({"mensagem":"Aluno removido com sucesso"})
               }
-          }
+          
         
           }catch (err){
             res.status(500).json({message: err.message})
