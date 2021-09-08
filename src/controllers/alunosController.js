@@ -160,7 +160,7 @@ const getAll = async (req, res) => {
               return res.status(404).json({message: "Aluno  não encontrado"})
             }else{
 
-            const aulaAgendada = await Agenda.findOne(aluno)
+            const aulaAgendada = await Agenda.findOne({"turma": aluno})
             console.log(aulaAgendada)
               if(aulaAgendada){
                 res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
