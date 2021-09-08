@@ -142,7 +142,7 @@ const IncluirAluno = (req, res) => {
 
           if (agendaFound) { 
 
-              let newAluno = new turmas(turma)
+              let newAluno = new turma(turma)
 
               newAluno.save(function (err) { 
 
