@@ -122,25 +122,63 @@ const createAula = async (req, res) => {
 }
 
 //Criar um novo aluno na aula
-const IncluirAluno = async (req, res) => {
-  try{
-    const aulaID = await Agenda.findById(req.params.id)
-    if (aulaID == null){
-      return res.status(404).json({message: "Aula não encontrado"})
-    }else{
+const IncluirAluno = (req, res) => {
 
-      Agenda.findByIdAndUpdate(
-      aulaID,
-      { $push: { alunos: req.body.id } },
-      { new: true, useFindAndModify: false })
-      Agenda.populate("alunos")
-      res.status(201).send({"message": "Aluno adicionado com sucesso ", aulaID});
-    }
-  
-    }
-  catch (err){
-    res.status(500).json({message: err.message})
+  let { nome, id } = req.body;
+
+  let requiredId = req.params.id;
+
+  let turma = {
+      nome,
+      id
   }
+
+  Agenda.findOne({ id: requiredId }, function (err, agendaFound) { 
+      if (err) {
+
+          res.status(500).send({ message: err.message })
+
+      } else {
+
+          if (agendaFound) { 
+
+              let newAluno = new turmas(turma)
+
+              newAluno.save(function (err) { 
+
+                  if (err) {
+
+                      res.status(500).send({ message: err.message })
+
+                  } else {
+
+                      agendaFound.turma.push(turma); 
+
+                      Agenda.updateOne({ id: requiredId }, { $set: { turma: agendaFound.turma } }, function (err) { 
+
+                          if (err) {
+
+                              res.status(500).send({ message: err.message })
+
+                          }
+
+                          res.status(201).send({
+
+                              message: "Aluno adicionado com sucesso!",
+
+                              ...agendaFound.toJSON()
+
+                          });
+                      });
+                  }
+              })
+          } else {
+
+              res.status(404).send({ message: "Aula não encontrada para inserir Aluno!" });
+
+          }
+      }
+  })
 }
 
 const updateProfessor = async (req, res) => {
