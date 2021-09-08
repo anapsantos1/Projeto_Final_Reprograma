@@ -142,9 +142,9 @@ const IncluirAluno = (req, res) => {
 
           if (agendaFound) { 
 
-              let newAluno = new Agenda(turma)
+              // let newAluno = new Agenda(turma)
 
-              newAluno.save(function (err) { 
+              // newAluno.save(function (err) { 
 
                   if (err) {
 
@@ -171,7 +171,7 @@ const IncluirAluno = (req, res) => {
                           });
                       });
                   }
-              })
+              // })
           } else {
 
               res.status(404).send({ message: "Aula não encontrada para inserir Aluno!" });
