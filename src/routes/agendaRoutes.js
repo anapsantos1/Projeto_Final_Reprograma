@@ -7,7 +7,7 @@ router.get('/', controller.getAll)
 
 router.post('/aula', controller.createAula)
 
-router.patch('/aula/:id', controller.IncluirAluno)
+router.post('/aula/:id', controller.IncluirAluno)
 
 router.get('/:id', controller.findAgendaAluno)
 router.get('/professor/:id', controller.findAgendaProfessor)
