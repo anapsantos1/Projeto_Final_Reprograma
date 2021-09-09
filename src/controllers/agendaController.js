@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Agenda = require('../models/agenda')
 const Aluno = require('../models/alunos')
 const Professor = require('../models/professores')
-//const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const SECRET_ALUNO = process.env.SECRET_ALUNO
 const SECRET_PROFESSOR = process.env.SECRET_PROFESSOR

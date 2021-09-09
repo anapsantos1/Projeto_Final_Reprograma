@@ -128,48 +128,48 @@ _______________________________________________________________________________
 
 Endpoint: {{URL}}aluno/
 
-| Rota            | Método | O que faz?                                      |
-| --------------- | ------ | ----------------------------------------------- |
-| '/ '            | GET    | Busca todos os alunos                           |
-| '/cadastro'     | POST   | Cadastro do aluno                               |
-| '/:id'          | GET    | Busca o aluno por ID                            |
-| '/anything/:id' | PATCH  | O aluno pode alterar qualquer dados do cadastro |
-| '/:id'          | DELETE | O aluno pode excluir o cadastro                 |
+| Rota            | Método | Permissão de acesso | O que faz?                                      |
+| --------------- | ------ | ------------------- | ----------------------------------------------- |
+| '/ '            | GET    | Professor           | Busca todos os alunos                           |
+| '/cadastro'     | POST   |                     | Cadastro do aluno                               |
+| '/:id'          | GET    | Aluno               | Busca o aluno por ID                            |
+| '/anything/:id' | PATCH  | Aluno               | O aluno pode alterar qualquer dados do cadastro |
+| '/:id'          | DELETE | Aluno               | O aluno pode excluir o cadastro                 |
 
 **6.2** **Rotas de Professor**
 
 Endpoint: {{URL}}professor/
 
-| Rota            | Método | O que faz?                                          |
-| --------------- | ------ | --------------------------------------------------- |
-| '/ '            | GET    | Busca todos os professores                          |
-| '/cadastro'     | POST   | Cadastro do professor                               |
-| '/:id'          | GET    | Busca o professor por ID                            |
-| '/anything/:id' | PATCH  | O professor pode alterar qualquer dados do cadastro |
-| '/:id'          | DELETE | O professor pode excluir o cadastro                 |
+| Rota            | Método | Permissão de acesso | O que faz?                                          |
+| --------------- | ------ | ------------------- | --------------------------------------------------- |
+| '/ '            | GET    | Professor e Aluno   | Busca todos os professores                          |
+| '/cadastro'     | POST   |                     | Cadastro do professor                               |
+| '/:id'          | GET    | Professor           | Busca o professor por ID                            |
+| '/anything/:id' | PATCH  | Professor           | O professor pode alterar qualquer dados do cadastro |
+| '/:id'          | DELETE | Professor           | O professor pode excluir o cadastro                 |
 
 **6.3** **Rotas da Agenda**
 
 Endpoint:{{URL}}agenda/
 
-| Rota             | Método | O que faz?                                                  |
-| ---------------- | ------ | ----------------------------------------------------------- |
-| '/ '             | GET    | Busca todas as aulas agendadas                              |
-| '/aula'          | POST   | Cadastrar uma aula                                          |
-| '/aula/:id'      | PATCH  | Incluir um aluno em uma aula existente                      |
-| '/aluno/:id'     | GET    | Busca todas as aula que o ID do aluno está cadastrado.      |
-| '/professor/:id' | GET    | Busca todas as aula que o ID do professor está cadastrado.  |
-| '/:id'           | PUT    | O ID do professor pode ser pelo ID do professor substituto. |
-| '/:id'           | DELETE | Excluir a aula.                                             |
+| Rota             | Método | Permissão de acesso | O que faz?                                                  |
+| ---------------- | ------ | ------------------- | ----------------------------------------------------------- |
+| '/ '             | GET    | Professor e Aluno   | Busca todas as aulas agendadas                              |
+| '/aula'          | POST   | Professor           | Cadastrar uma aula                                          |
+| '/aula/:id'      | PATCH  | Aluno               | Incluir um aluno em uma aula existente                      |
+| '/aluno/:id'     | GET    | Aluno               | Busca todas as aulas que o ID do aluno está cadastrado.     |
+| '/professor/:id' | GET    | Professor           | Busca todas as aulas que o ID do professor está cadastrado. |
+| '/:id'           | PUT    | Professor           | O ID do professor pode ser pelo ID do professor substituto. |
+| '/:id'           | DELETE | Professor           | Excluir a aula.                                             |
 
 **6.4** **Rotas da Mural**
 
 Endpoint:{{URL}}mural/
 
-| Rota | Método | O que faz?                    |
-| ---- | ------ | ----------------------------- |
-| '/ ' | GET    | Busca todos os itens do mural |
-| '/ ' | POST   | Cadastrar um depoimento       |
+| Rota | Método | Permissão de acesso | O que faz?                    |
+| ---- | ------ | ------------------- | ----------------------------- |
+| '/ ' | GET    | Professor e Aluno   | Busca todos os itens do mural |
+| '/ ' | POST   | Professor e Aluno   | Cadastrar um depoimento       |
 
 ### 6.5 **Schemas**
 _______________________________________________________________________________
@@ -323,14 +323,15 @@ const muralSchema = new mongoose.Schema({
 
 ### 7. Regras de negocio:
 _______________________________________________________________________________
-- [x]  Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado
-- [x]  Não deverá ser possível criar título com o mesmo nome
-- [x]  Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição
-- [ ]  Os alunos devem conseguir se incluir em uma aula 
-- [x]  Não deverá ser possível excluir um aluno que possuí uma aula agendada
-- [x]  Não deverá ser possível excluir um professor que possuí uma aula agendada
-- [x]  O professor pode incluir um professor substituto
-- [x]  É necessária a autenticação do token em todas as telas.
+- [x] Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado;
+- [x] Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição;
+- [x] Os alunos devem conseguir se incluir em uma aula;
+- [x] Não deverá ser possível excluir um aluno que possuí uma aula agendada;
+- [x] Não deverá ser possível excluir um professor que possuí uma aula agendada;
+- [x] O professor pode incluir um professor substituto;
+- [x] É necessária a autenticação do token em todas as telas;
+- [x] Os alunos não devem ter acesso as paginas de controle do professor;
+- [x]  Os professor não devem ter acesso as paginas de controle do aluno.
 
 <br>
 <br>
@@ -340,7 +341,6 @@ _______________________________________________________________________________
 - Desenvolvimento da interface do site;
 - Envio de e-mail automático dos agendamentos;
 - Ampliar o projeto para atender todas as regiões do Brasil;
-- Identificar durante a autenticação se o token pertence a um professor ou de um aluno;
 - Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
 
 ### 9. **Deseja Contribuir?**
