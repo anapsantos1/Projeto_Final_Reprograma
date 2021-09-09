@@ -148,7 +148,7 @@ const getAll = async (req, res) => {
       res.status(500).send({message: err.message})
   }else{
     if(aluno){
-      Agenda.findOne({id: alunoID}, function (err, agenda){
+      Agenda.turma.findOne({id: alunoID}, function (err, agenda){
         if(agenda){
           res.status(500).send({
             message:'Possui uma aula Agendada',
