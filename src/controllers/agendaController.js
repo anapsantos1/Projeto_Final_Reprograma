@@ -124,61 +124,58 @@ const createAula = async (req, res) => {
 //Criar um novo aluno na aula
 const IncluirAluno = (req, res) => {
 
-  let { nome, id } = req.body;
-
-  let requiredId = req.params.id;
-
-  let turma = {
-      nome,
-      id
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  Agenda.findOne({ id: requiredId }, function (err, agendaFound) { 
-      if (err) {
-
-          res.status(500).send({ message: err.message })
-
-      } else {
-
-          if (agendaFound) { 
-
-              // let newAluno = new Agenda(turma)
-
-              // newAluno.save(function (err) { 
-
-                  if (err) {
-
-                      res.status(500).send({ message: err.message })
-
-                  } else {
-
-                      agendaFound.turma.push(turma); 
-
-                      Agenda.updateOne({ id: requiredId }, { $set: { turma: agendaFound.turma } }, function (err) { 
-
-                          if (err) {
-
-                              res.status(500).send({ message: err.message })
-
-                          }
-
-                          res.status(201).send({
-
-                              message: "Aluno adicionado com sucesso!",
-
-                              ...agendaFound.toJSON()
-
-                          });
-                      });
-                  }
-              // })
-          } else {
-
-              res.status(404).send({ message: "Aula não encontrada para inserir Aluno!" });
-
-          }
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }else{
+      let { nome, id } = req.body;
+      let requiredId = req.params.id;
+      let turma = {
+          nome,
+          id
       }
-  })
+      Agenda.findOne({ id: requiredId }, function (err, agendaFound) { 
+          if (err) {
+  
+              res.status(500).send({ message: err.message })
+  
+          } else {
+  
+              if (agendaFound) { 
+  
+                      if (err) {
+  
+                          res.status(500).send({ message: err.message })
+  
+                      } else {
+                          agendaFound.turma.push(turma); 
+                          Agenda.updateOne({ id: requiredId }, { $set: { turma: agendaFound.turma } }, function (err) { 
+  
+                              if (err) {
+                                  res.status(500).send({ message: err.message })
+                              }
+                              res.status(201).send({
+                                  message: "Aluno adicionado com sucesso!",
+                                  ...agendaFound.toJSON()
+                              });
+                          });
+                      }
+              } else {
+  
+                  res.status(404).send({ message: "Aula não encontrada para inserir Aluno!" });
+  
+              }
+          }
+      })
+}
+})
 }
 
 const updateProfessor = async (req, res) => {
