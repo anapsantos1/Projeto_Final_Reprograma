@@ -142,40 +142,42 @@ const getAll = async (req, res) => {
 }
 
   const removeOneAluno = async (req, res) => {
-    const authHeader = req.get('Authorization');
-    const token = authHeader.split(' ')[1]
-    console.log(token)
-    if (!token) {
-      return res.status(403).send({message: "Kd a autorizationnn"})
+  const alunoID = req.params.id
+  Aluno.findOne({id: alunoID}, function (err, aluno){
+    if (err) {
+      res.status(500).send({message: err.message})
+  }else{
+    if(aluno){
+      Agenda.findOne({id: alunoID}, function (err, agenda){
+        if(agenda){
+          res.status(500).send({
+            message:'Possui uma aula Agendada',
+            status: "FAIL"
+          })
+      aluno.deleteOne({id: alunoID}, function(err){
+        if (err){
+          res.status(500).send({
+            message:err.message,
+            status:"FAIL"
+          })
+        }else{
+          res.status(200).send({
+            message: 'Aluno removido com sucesso',
+            status: "SUCCESS"
+        })
+        }
+      })
+        }
+      })
+
+    }else {
+      res.status(404).send({ message: 'Não há aluno para ser removido com esse id' })
     }
-  
-    jwt.verify(token, SECRET_ALUNO, async (err) => {
-      if (err){
-        res.status(403).send({message: '  token não valido', err})
-      }else{
-          try{
-            
-            const aluno = await Aluno.findById(req.params.id)
-            
-            if (aluno == null){
-              return res.status(404).json({message: "Aluno  não encontrado"})
-            }else{
-            const aulaAgendada = await Agenda.findOne({"id": req.params.id})
-            console.log(aulaAgendada)
-              if(aulaAgendada){
-                  res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
-                  
-                }
-              aluno.remove()
-              res.status(200).json({"mensagem":"Aluno removido com sucesso"})
-              
-            }
-        
-          }catch (err){
-            res.status(500).json({message: err.message})
-          }
-      }
+  }
+
+
   })
+
 }
 
 
