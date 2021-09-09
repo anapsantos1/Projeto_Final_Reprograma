@@ -148,12 +148,13 @@ const getAll = async (req, res) => {
       res.status(500).send({message: err.message})
   }else{
     if(aluno){
-      Agenda.findOne({"id": alunoID}, function (err, agenda){
+      Agenda.findOne({id: alunoID}, function (err, agenda){
         if(agenda){
           res.status(500).send({
             message:'Possui uma aula Agendada',
             status: "FAIL"
           })
+        }else{
       aluno.deleteOne({id: alunoID}, function(err){
         if (err){
           res.status(500).send({
@@ -167,7 +168,7 @@ const getAll = async (req, res) => {
         })
         }
       })
-        }
+    } 
       })
 
     }else {
