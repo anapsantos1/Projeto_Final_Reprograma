@@ -164,11 +164,10 @@ const getAll = async (req, res) => {
             console.log(aulaAgendada)
             if(aulaAgendada){
                 res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
-
-                break
+                
               }
-                 aluno.remove()
-                 res.status(200).json({"mensagem":"Aluno removido com sucesso"})
+              aluno.remove()
+              res.status(200).json({"mensagem":"Aluno removido com sucesso"})
               
             }
         
