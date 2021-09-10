@@ -25,7 +25,7 @@ const agendaSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    id: {
+    email: {
       type: String,
       required: true
     },
