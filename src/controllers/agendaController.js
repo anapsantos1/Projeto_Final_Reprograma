@@ -147,7 +147,7 @@ const IncluirAluno = (req, res) => {
           email,
           IDcadastrado
       }
-      Agenda.findOne({ id: requiredId }, function (err, agendaFound) { 
+      Agenda.findOne({_id: requiredId}, function (err, agendaFound) { 
           if (err) {
   
               res.status(500).send({ message: err.message })
