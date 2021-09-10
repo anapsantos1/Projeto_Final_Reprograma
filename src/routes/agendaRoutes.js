@@ -9,7 +9,7 @@ router.post('/aula', controller.createAula)
 
 router.post('/aula/:id', controller.IncluirAluno)
 
-router.get('/:id', controller.findAgendaAluno)
+router.get('/aluno/:id', controller.findAgendaAluno)
 router.get('/professor/:id', controller.findAgendaProfessor)
 
 router.put('/aula/professor/:id', controller.updateProfessor)
