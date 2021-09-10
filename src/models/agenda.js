@@ -29,6 +29,11 @@ const agendaSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    IDcadastrado: {
+      type: String,
+      required: true
+    },
+
   }] 
 
 })

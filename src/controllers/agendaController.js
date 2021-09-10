@@ -43,15 +43,17 @@ const findAgendaAluno = async (req, res) => {
           
           if (aluno == null){
             return res.status(404).json({message: "Aluno  não encontrado"})
-          }else{
-          const aulaAgendada = await Agenda.findOne({id: aluno})
-          .populate('professor')
-
-          if (aulaAgendada == null){
-              return res.status(404).json({message: "Nenhuma aula agendada"})
           }
-            
-            res.status(200).json({aulaAgendada})
+          else{
+            const aulaAgendada = await Agenda.findOne({IDcadastrado: aluno})
+            .populate('professor')
+
+            if (aulaAgendada == null){
+                return res.status(404).json({message: "Nenhuma aula agendada"})
+            }else{
+              
+              res.status(200).json({aulaAgendada})
+            }
         }
       }catch (err){
         res.status(400).json({ message: err.message})
