@@ -281,20 +281,22 @@ const agendaSchema = new mongoose.Schema({
     ref: 'professores'
   },
   turma : [{
-  
-      nome: {
-        type: String,
-        required: true
-      },
-      id: {
-        type: String,
-        required: true
-      },
- 
-  }] ,
+    nome: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    IDcadastrado: {
+      type: String,
+      required: true
+    },
+
+  }] 
 
 })
-
 ```
 
 
@@ -326,7 +328,7 @@ _______________________________________________________________________________
 - [x] Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado;
 - [x] Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição;
 - [x] Os alunos devem conseguir se incluir em uma aula;
-- [x] Não deverá ser possível excluir um aluno que possuí uma aula agendada;
+- [x] O aluno deve consegui excluir o cadastro do site;
 - [x] Não deverá ser possível excluir um professor que possuí uma aula agendada;
 - [x] O professor pode incluir um professor substituto;
 - [x] É necessária a autenticação do token em todas as telas;
