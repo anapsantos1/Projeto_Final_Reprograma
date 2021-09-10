@@ -149,28 +149,32 @@ const removeOneAluno = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET, async (err) => {
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
-    }
-  try{
-    const aluno = await Aluno.findById(req.params.id)
-    if (aluno == null){
-      return res.status(404).json({message: "Aluno  não encontrado"})
     }else{
-      const aulaAgendada = await Agenda.findOne({"id": aluno})
-
-      if(aulaAgendada){
-        res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
-      }else{
-      aluno.remove()
-      res.status(200).json({"mensagem":"Aluno removido com sucesso"})
-      }
-  }
-
-  }catch (err){
-    res.status(500).json({message: err.message})
-  }
+        try{
+          
+          const aluno = await Aluno.findById(req.params.id)
+          
+          if (aluno == null){
+            return res.status(404).json({message: "Aluno  não encontrado"})
+          }else{
+          // const aulaAgendada = await Agenda.findOne({"id": req.params.id})
+          // console.log(aulaAgendada)
+          //   if(aulaAgendada){
+          //       res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
+                
+          //     }
+            aluno.remove()
+            res.status(200).json({"mensagem":"Aluno removido com sucesso"})
+            
+          }
+      
+        }catch (err){
+          res.status(500).json({message: err.message})
+        }
+    }
 })
 }
 
