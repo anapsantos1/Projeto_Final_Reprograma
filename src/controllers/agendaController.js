@@ -45,8 +45,9 @@ const findAgendaAluno = async (req, res) => {
             return res.status(404).json({message: "Aluno  não encontrado"})
           }
           
-            const aulaAgendada = await Agenda.findOne({"IDcadastrado": aluno})
+            const aulaAgendada = await Agenda.find({IDcadastrado: aluno})
             .populate('professor')
+            console.log(aulaAgendada)
 
             if (aulaAgendada == null){
                 return res.status(404).json({message: "Nenhuma aula agendada"})
