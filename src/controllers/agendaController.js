@@ -38,14 +38,13 @@ const findAgendaAluno = async (req, res) => {
       res.status(403).send({message: '  token não valido', err})
     }else{
         try{
-          const turma = Agenda.turma
           const aluno = await Aluno.findById(req.params.id)
           
           if (aluno == null){
             return res.status(404).json({message: "Aluno  não encontrado"})
           }
           
-            const aulaAgendada = await turma.findOne({IDcadastrado: aluno})
+            const aulaAgendada = await Agenda.findOne({IDcadastrado: aluno})
             .populate('professor')
             console.log(aulaAgendada)
 
