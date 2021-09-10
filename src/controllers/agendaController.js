@@ -144,7 +144,8 @@ const IncluirAluno = (req, res) => {
       let requiredId = req.params.id;
       let turma = {
           nome,
-          id
+          email,
+          IDcadastrado
       }
       Agenda.findOne({ id: requiredId }, function (err, agendaFound) { 
           if (err) {
