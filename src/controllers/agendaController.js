@@ -140,7 +140,7 @@ const IncluirAluno = (req, res) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }else{
-      let { nome, id } = req.body;
+      let { nome, email, IDcadastrado} = req.body;
       let requiredId = req.params.id;
       let turma = {
           nome,
