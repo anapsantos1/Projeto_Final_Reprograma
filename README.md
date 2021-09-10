@@ -49,9 +49,17 @@ Paulo Freire
 
 <center><img src="https://educacao.imaginie.com.br/wp-content/uploads/2020/12/Pagina-de-materiais-gratuitos.gif" alt="Educacão" style="zoom:50%;" />	</center>
 
-### 3. Como vai funcionar?
+
+
+### 3. Sumário
+
+- [TOC]
+
+
+### 4. Como vai funcionar?
+
 _______________________________________________________________________________
-O Projeto não desista é uma API RESTfull feita com a linguagen Javascript usando o node.js integrada com o banco de dados MongoDB. Está divida em 4 telas Aluno, Professor, Agenda e mural. A tela de aluno será usada para realização do cadastro do aluno, exclusão (obs.:Só será possível se o aluno não tiver aulas agendadas), alteração e na tela o professor pode visualizar todos os alunos cadastrados também.
+O Projeto não desista é uma API RESTfull feita com a linguagen Javascript usando o node.js integrada com o banco de dados MongoDB. Está divida em 4 telas Aluno, Professor, Agenda e mural. A tela de aluno será usada para realização do cadastro do aluno, exclusão, alteração e na tela o professor pode visualizar todos os alunos cadastrados também.
 
 Na tela do professor será usada para realização do cadastro do professor, exclusões.:Só será possível se o professor não tiver aulas agendadas), alteração e os alunos também podem visualizar todos os professores cadastrados.
 
@@ -333,7 +341,7 @@ _______________________________________________________________________________
 - [x] O professor pode incluir um professor substituto;
 - [x] É necessária a autenticação do token em todas as telas;
 - [x] Os alunos não devem ter acesso as paginas de controle do professor;
-- [x]  Os professor não devem ter acesso as paginas de controle do aluno.
+- [x] Os professor não devem ter acesso as paginas de controle do aluno.
 
 <br>
 <br>
@@ -342,6 +350,7 @@ _______________________________________________________________________________
 _______________________________________________________________________________
 - Desenvolvimento da interface do site;
 - Envio de e-mail automático dos agendamentos;
+- Excluir o aluno automaticamente da aula quando o cadastro for excluir  na tabela de aluno;
 - Ampliar o projeto para atender todas as regiões do Brasil;
 - Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
 
