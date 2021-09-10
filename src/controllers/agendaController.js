@@ -162,7 +162,7 @@ const IncluirAluno = (req, res) => {
   
                       } else {
                           agendaFound.turma.push(turma); 
-                          Agenda.updateOne({ id: requiredId }, { $set: { turma: agendaFound.turma } }, function (err) { 
+                          Agenda.updateOne({_id: requiredId }, { $set: { turma: agendaFound.turma } }, function (err) { 
   
                               if (err) {
                                   res.status(500).send({ message: err.message })
