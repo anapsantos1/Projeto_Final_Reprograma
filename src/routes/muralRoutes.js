@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 const controller = require('../controllers/muralController')
 
-router.get('/', controller.getAllProfessor)
-router.get('/', controller.getAllAluno)
+router.get('/professor', controller.getAllProfessor)
+router.get('/aluno', controller.getAllAluno)
 
 
-router.post('/', controller.createDepoimentoAluno)
-router.post('/', controller.createDepoimentoProfessor)
+router.post('/aluno', controller.createDepoimentoAluno)
+router.post('/professor', controller.createDepoimentoProfessor)
 
 
 module.exports = router
