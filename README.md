@@ -6,7 +6,9 @@ Turma Online 12 - Todas em Tech | Back-end | 2021 |
 
 ## **Projeto não desista**
 
-<center><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</center>	
+<h5 align="center">Status: 🚧 Em construção... 🚧</h5>
+
+<p align="center"><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</p>	
 
 ### 1. **Qual o problema?**
 _______________________________________________________________________________
@@ -47,7 +49,7 @@ Paulo Freire
 
 
 
-<center><img src="https://educacao.imaginie.com.br/wp-content/uploads/2020/12/Pagina-de-materiais-gratuitos.gif" alt="Educacão" style="zoom:50%;" />	</center>
+<p align="center"><img src="https://educacao.imaginie.com.br/wp-content/uploads/2020/12/Pagina-de-materiais-gratuitos.gif" alt="Educacão" style="zoom:50%;" />	</p>
 
 
 
@@ -130,7 +132,7 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
 _______________________________________________________________________________
 
 
-<img src="https://acegif.com/wp-content/uploads/cat-typing-24.gif" width="150">
+<p align="center"><img src="https://acegif.com/wp-content/uploads/cat-typing-24.gif" width="150"></p>
 
 **6.1** **Rotas de aluno**
 
@@ -368,3 +370,6 @@ _______________________________________________________________________________
 -  [Linkedin](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
 -  [Github](https://github.com/anapsantos1?tab=repositories)
 
+## ©️ Licença
+
+Este projeto está sob a licença [MIT](./LICENSE.txt).
