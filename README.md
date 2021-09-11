@@ -391,4 +391,9 @@ _______________________________________________________________________________
 
 -  [Linkedin](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
 -  [Github](https://github.com/anapsantos1?tab=repositories)
+_______________________________________________________________________________
+
+### Um pouquinho do resultado
+
+<img src="https://github.com/anapsantos1/ProjetoGuiado_On12_s14_Ana-Paula/blob/main/Anima%C3%A7%C3%A3o.gif?raw=true">
 
