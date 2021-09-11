@@ -395,5 +395,5 @@ _______________________________________________________________________________
 
 ### Um pouquinho do resultado
 
-<img src="https://github.com/anapsantos1/ProjetoGuiado_On12_s14_Ana-Paula/blob/main/Anima%C3%A7%C3%A3o.gif?raw=true">
+<img src="https://github.com/anapsantos1/Projeto_Final_Reprograma/blob/main/img/Anima%C3%A7%C3%A3o_projeto.gif">
 
