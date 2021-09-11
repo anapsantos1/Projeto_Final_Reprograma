@@ -14,7 +14,7 @@ const getAllAluno = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -32,7 +32,7 @@ const getAllProfessor = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET_ALUNO, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
