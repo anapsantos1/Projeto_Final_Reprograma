@@ -187,7 +187,6 @@ Endpoint:{{URL}}agenda/
 | '/ '             | GET    | Professor e Aluno   | Busca todas as aulas agendadas                              |
 | '/aula'          | POST   | Professor           | Cadastrar uma aula                                          |
 | '/aula/:id'      | PATCH  | Aluno               | Incluir um aluno em uma aula existente                      |
-| '/aluno/:id'     | GET    | Aluno               | Busca todas as aulas que o ID do aluno está cadastrado.     |
 | '/professor/:id' | GET    | Professor           | Busca todas as aulas que o ID do professor está cadastrado. |
 | '/:id'           | PUT    | Professor           | O ID do professor pode ser pelo ID do professor substituto. |
 | '/:id'           | DELETE | Professor           | Excluir a aula.                                             |
@@ -372,7 +371,8 @@ _______________________________________________________________________________
 _______________________________________________________________________________
 - Desenvolvimento da interface do site;
 - Envio de e-mail automático dos agendamentos;
-- Excluir o aluno automaticamente da aula quando o cadastro for excluir  na tabela de aluno;
+- Excluir o aluno automaticamente da aula quando o cadastro for excluido da tabela de aluno;
+- Criar uma rota para buscar agenda do aluno;
 - Ampliar o projeto para atender todas as regiões do Brasil;
 - Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
 
