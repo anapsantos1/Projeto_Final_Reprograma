@@ -55,7 +55,27 @@ Paulo Freire
 
 ### 3. Sumário
 
-- [TOC]
+- [Projeto não desista](#Projeto-não-desista)
+- [1. Qual o problema?](#1.-Qual-o-problema?)
+- [2. O que propõe o projeto?](#2.-O-que-propõe-o-projeto?)
+- [3. Sumário](#3.-Sumário)
+- [4. Como vai funcionar?](#4.-Como-vai-funcionar?)
+- [5. Tecnologias usadas:](#5.-Tecnologias-usadas:)
+- [6. Arquitetura MVC](#6.-Arquitetura-MVC)
+- [7. Documentação da API](#7.-Documentação-da-API)
+- [7.1 Rotas de aluno](#7.1-Rotas-de-aluno)
+- [7.2 Rotas de Professor](#7.2-Rotas-de-Professor)
+- [7.3 Rotas da Agenda](#7.3-Rotas-da-Agenda)
+- [7.4 Rotas da Mural](#7.4-Rotas-da-Mural)
+- [7.5 Schemas](#7.5-Schemas)
+- [7.5.1 Alunos](#7.5.1-Alunos)
+- [7.5.2 Professor](#7.5.2-Professor)
+- [7.5.3 Agenda](#7.5.3-Agenda)
+- [7.5.4 Mural](#7.5.4-Mural)
+- [8. Regras de negocio:](#8.-Regras-de-negocio)
+- [9. Implementações Futuras:](#9.-Implementações-Futuras:)
+- [10. Deseja Contribuir?](#10.-Deseja-Contribuir?)
+- [11. Autor](#11.-Autor)
 
 
 ### 4. Como vai funcionar?
@@ -63,7 +83,7 @@ Paulo Freire
 _______________________________________________________________________________
 O Projeto não desista é uma API RESTfull feita com a linguagen Javascript usando o node.js integrada com o banco de dados MongoDB. Está divida em 4 telas Aluno, Professor, Agenda e mural. A tela de aluno será usada para realização do cadastro do aluno, exclusão, alteração e na tela o professor pode visualizar todos os alunos cadastrados também.
 
-Na tela do professor será usada para realização do cadastro do professor, exclusões.:Só será possível se o professor não tiver aulas agendadas), alteração e os alunos também podem visualizar todos os professores cadastrados.
+Na tela do professor será usada para realização do cadastro do professor, exclusões.:Só será possível se o professor não tiver aulas agendadas, alteração e os alunos também podem visualizar todos os professores cadastrados.
 
 Agenda nesta tela o professor pode criar as aulas com os temas mais solicitados pelos alunos, ele também pode incluir os alunos na turma de acordo com a dificuldade informada. O aluno também pode incluir seu nome na aula caso não tenha sido incluído. O professor pode visualizar todas as aulas agendadas por ele e o aluno pode visualizar as aulas que esta cadastrado. O professor pode excluir a aula.
 
@@ -71,7 +91,7 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
 
 
 
-## 4. Tecnologias usadas:
+## 5. Tecnologias usadas:
 
 | Ferramenta | Descrição |
 | --- | --- |
@@ -89,7 +109,7 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
 <br>
 <br>
 
-## 5. 📁 Arquitetura MVC
+## 6. 📁 Arquitetura MVC
 
 ```
  📁 naoDesista
@@ -128,13 +148,13 @@ O mural será um espaço onde alunos e professores vão postar vídeos de depoim
 <br>
 <br>
 
-### 6. Documentação da API:
+### 7. Documentação da API:
 _______________________________________________________________________________
 
 
 <p align="center"><img src="https://acegif.com/wp-content/uploads/cat-typing-24.gif" width="150"></p>
 
-**6.1** **Rotas de aluno**
+**7.1** **Rotas de aluno**
 
 Endpoint: {{URL}}aluno/
 
@@ -146,7 +166,7 @@ Endpoint: {{URL}}aluno/
 | '/anything/:id' | PATCH  | Aluno               | O aluno pode alterar qualquer dados do cadastro |
 | '/:id'          | DELETE | Aluno               | O aluno pode excluir o cadastro                 |
 
-**6.2** **Rotas de Professor**
+**7.2** **Rotas de Professor**
 
 Endpoint: {{URL}}professor/
 
@@ -158,7 +178,7 @@ Endpoint: {{URL}}professor/
 | '/anything/:id' | PATCH  | Professor           | O professor pode alterar qualquer dados do cadastro |
 | '/:id'          | DELETE | Professor           | O professor pode excluir o cadastro                 |
 
-**6.3** **Rotas da Agenda**
+**7.3** **Rotas da Agenda**
 
 Endpoint:{{URL}}agenda/
 
@@ -172,7 +192,7 @@ Endpoint:{{URL}}agenda/
 | '/:id'           | PUT    | Professor           | O ID do professor pode ser pelo ID do professor substituto. |
 | '/:id'           | DELETE | Professor           | Excluir a aula.                                             |
 
-**6.4** **Rotas da Mural**
+**7.4** **Rotas da Mural**
 
 Endpoint:{{URL}}mural/
 
@@ -181,9 +201,9 @@ Endpoint:{{URL}}mural/
 | '/ ' | GET    | Professor e Aluno   | Busca todos os itens do mural |
 | '/ ' | POST   | Professor e Aluno   | Cadastrar um depoimento       |
 
-### 6.5 **Schemas**
+### 7.5 **Schemas**
 _______________________________________________________________________________
-**6.5.1** **Alunos**
+**7.5.1** **Alunos**
 
 ```
 const alunoSchema = new mongoose.Schema({
@@ -227,7 +247,7 @@ const alunoSchema = new mongoose.Schema({
 
 
 
-**6.5.2** **Professor**
+**7.5.2** **Professor**
 
 ```
 const professorSchema = new mongoose.Schema({
@@ -267,7 +287,7 @@ const professorSchema = new mongoose.Schema({
 
 
 
-**6.5.3** **Agenda**
+**7.5.3** **Agenda**
 
 ```
 const agendaSchema = new mongoose.Schema({
@@ -311,7 +331,7 @@ const agendaSchema = new mongoose.Schema({
 
 
 
-**6.5.4** **Mural**
+**7.5.4** **Mural**
 
 ```
 const muralSchema = new mongoose.Schema({
@@ -333,7 +353,7 @@ const muralSchema = new mongoose.Schema({
 
 
 
-### 7. Regras de negocio:
+### 8. Regras de negocio:
 _______________________________________________________________________________
 - [x] Não deverá ser possível criar um cadastro de aluno com um e-mail já cadastrado;
 - [x] Para criar uma nova aula, deverá vincular no momento da criação a um professor já existente no sistema, utilizando o numero do id do professor correspondente no corpo da requisição;
@@ -348,7 +368,7 @@ _______________________________________________________________________________
 <br>
 <br>
 
-### 8. Implementações Futuras:
+### 9. Implementações Futuras:
 _______________________________________________________________________________
 - Desenvolvimento da interface do site;
 - Envio de e-mail automático dos agendamentos;
@@ -356,20 +376,17 @@ _______________________________________________________________________________
 - Ampliar o projeto para atender todas as regiões do Brasil;
 - Incluir psicólogos e profissionais da saúde para fazer um acompanhamento emocional e psicológico dos alunos
 
-### 9. **Deseja Contribuir?**
+### 10. **Deseja Contribuir?**
 _______________________________________________________________________________
 1. Faça o download ou clone este repositório;
 2. Abra seu Terminal/Prompt e navegue até o diretório Projeto_Final_Reprograma;
 3. Rode: $ npm install;
 4. Para subir o servidor é só rodar $ npm run start.
 
-### 10. Autor  :woman_student:
+### 11. Autor  :woman_student:
 _______________________________________________________________________________
 ##### Ana Paula Araújo
 
 -  [Linkedin](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
 -  [Github](https://github.com/anapsantos1?tab=repositories)
 
-## ©️ Licença
-
-Este projeto está sob a licença [MIT](./LICENSE.txt).
