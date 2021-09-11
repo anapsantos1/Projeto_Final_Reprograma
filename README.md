@@ -10,7 +10,7 @@ Turma Online 12 - Todas em Tech | Back-end | 2021 |
 
 <p align="center"><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</p>	
 
-### **Qual o problema?**
+### 1. **Qual o problema?**
 _______________________________________________________________________________
 A educação para Jovens e Adultos sempre foi um grande desafio, devido a vários fatores: escolas que não estão preparadas para atender esse público, não tem horário adequado e diversos problemas. Mesmo com todos os desafios muitas pessoas já em fase adulta procuram voltar aos estudos, e principalmente se adequarem as novas tecnologias que se renovam a cada dia nos setores organizacionais e pessoais.
 
@@ -56,26 +56,26 @@ Paulo Freire
 ### 3. Sumário
 
 - [Projeto não desista](#Projeto-não-desista)
-- [Qual o problema?](https://github.com/anapsantos1/Projeto_Final_Reprograma#qual-o-problema)
-- [O que propõe o projeto?](#O-que-propõe-o-projeto?)
-- [Sumário](#Sumário)
-- [Como vai funcionar?](#Como-vai-funcionar?)
-- [Tecnologias usadas:](#Tecnologias-usadas)
-- [Arquitetura MVC](#Arquitetura-MVC)
-- [Documentação da API](#Documentação-da-API)
-- [Rotas de aluno](#Rotas-de-aluno)
-- [Rotas de Professor](#Rotas-de-Professor)
-- [Rotas da Agenda](#Rotas-da-Agenda)
-- [Rotas da Mural](#Rotas-da-Mural)
-- [Schemas](#Schemas)
-- [Alunos](#Alunos)
-- [Professor](#Professor)
-- [Agenda](#Agenda)
-- [Mural](#Mural)
-- [Regras de negocio:](#Regras-de-negocio)
-- [Implementações Futuras:](#Implementações-Futuras)
-- [Deseja Contribuir?](#Deseja-Contribuir?)
-- [Autor](#Autor)
+- [1. Qual o problema?](https://github.com/anapsantos1/Projeto_Final_Reprograma#qual-o-problema)
+- [2. O que propõe o projeto?](https://github.com/anapsantos1/Projeto_Final_Reprograma#2-o-que-prop%C3%B5e-o-projeto)
+- [3. Sumário](https://github.com/anapsantos1/Projeto_Final_Reprograma#3-sum%C3%A1rio)
+- [4. Como vai funcionar?](https://github.com/anapsantos1/Projeto_Final_Reprograma#4-como-vai-funcionar)
+- [5. Tecnologias usadas:](https://github.com/anapsantos1/Projeto_Final_Reprograma#5-tecnologias-usadas)
+- [6. Arquitetura MVC](https://github.com/anapsantos1/Projeto_Final_Reprograma#6--arquitetura-mvc)
+- [7. Documentação da API](https://github.com/anapsantos1/Projeto_Final_Reprograma#7-documenta%C3%A7%C3%A3o-da-api)
+- [7.1 Rotas de aluno](#Rotas-de-aluno)
+- [7.2 Rotas de Professor](#Rotas-de-Professor)
+- [7.3 Rotas da Agenda](#Rotas-da-Agenda)
+- [7.4 Rotas da Mural](#Rotas-da-Mural)
+- [7.5. Schemas](https://github.com/anapsantos1/Projeto_Final_Reprograma#75-schemas)
+- [7.5.1 Alunos](#Alunos)
+- [7.5.2 Professor](#Professor)
+- [7.5.3 Agenda](#Agenda)
+- [7.5.4 Mural](#Mural)
+- [8. Regras de negocio:](https://github.com/anapsantos1/Projeto_Final_Reprograma#8-regras-de-negocio)
+- [9 Implementações Futuras:](https://github.com/anapsantos1/Projeto_Final_Reprograma#9-implementa%C3%A7%C3%B5es-futuras)
+- [Deseja Contribuir?](###Deseja-Contribuir?)
+- [Autor](###Autor)
 
 
 ### 4. Como vai funcionar?
