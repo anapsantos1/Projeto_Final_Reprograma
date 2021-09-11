@@ -56,7 +56,7 @@ Paulo Freire
 ### 3. Sumário
 
 - [Projeto não desista](#Projeto-não-desista)
-- [1. Qual o problema?](https://github.com/anapsantos1/Projeto_Final_Reprograma#qual-o-problema)
+- [1. Qual o problema?](https://github.com/anapsantos1/Projeto_Final_Reprograma#1-qual-o-problema)
 - [2. O que propõe o projeto?](https://github.com/anapsantos1/Projeto_Final_Reprograma#2-o-que-prop%C3%B5e-o-projeto)
 - [3. Sumário](https://github.com/anapsantos1/Projeto_Final_Reprograma#3-sum%C3%A1rio)
 - [4. Como vai funcionar?](https://github.com/anapsantos1/Projeto_Final_Reprograma#4-como-vai-funcionar)
@@ -74,8 +74,8 @@ Paulo Freire
 - [7.5.4 Mural](#Mural)
 - [8. Regras de negocio:](https://github.com/anapsantos1/Projeto_Final_Reprograma#8-regras-de-negocio)
 - [9 Implementações Futuras:](https://github.com/anapsantos1/Projeto_Final_Reprograma#9-implementa%C3%A7%C3%B5es-futuras)
-- [Deseja Contribuir?](###Deseja-Contribuir?)
-- [Autor](###Autor)
+- [Deseja Contribuir?](https://github.com/anapsantos1/Projeto_Final_Reprograma#10-deseja-contribuir)
+- [Autor](https://github.com/anapsantos1/Projeto_Final_Reprograma#11-autor--woman_student)
 
 
 ### 4. Como vai funcionar?
