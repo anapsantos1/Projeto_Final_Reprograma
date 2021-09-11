@@ -10,7 +10,7 @@ Turma Online 12 - Todas em Tech | Back-end | 2021 |
 
 <p align="center"><img src="https://colegioguiness.com.br/wp-content/uploads/2021/05/Como-preparar-e-dar-aulas-online-mantendo-o-foco-dos-alunos.gif" alt="Educacão" style="zoom:50%;" />	</p>	
 
-### 1. **Qual o problema?**
+### **Qual o problema?**
 _______________________________________________________________________________
 A educação para Jovens e Adultos sempre foi um grande desafio, devido a vários fatores: escolas que não estão preparadas para atender esse público, não tem horário adequado e diversos problemas. Mesmo com todos os desafios muitas pessoas já em fase adulta procuram voltar aos estudos, e principalmente se adequarem as novas tecnologias que se renovam a cada dia nos setores organizacionais e pessoais.
 
