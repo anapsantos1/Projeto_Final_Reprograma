@@ -387,7 +387,7 @@ _______________________________________________________________________________
 _______________________________________________________________________________
 ##### Ana Paula Araújo
 
-<p><img src="https://github.com/anapsantos1/Projeto_Final_Reprograma/blob/main/img/ScreenHunter_278.png" width="50"></p>
+<p><img src="https://github.com/anapsantos1/Projeto_Final_Reprograma/blob/main/img/ScreenHunter_278.png" width="150"></p>
 
 -  [Linkedin](https://www.linkedin.com/in/ana-paula-lima-3269214b/#)
 -  [Github](https://github.com/anapsantos1?tab=repositories)
