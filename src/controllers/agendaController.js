@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const SECRET_ALUNO = process.env.SECRET_ALUNO
 const SECRET_PROFESSOR = process.env.SECRET_PROFESSOR
 
-const getAll = async (req, res) => {
+const getAllAluno = async (req, res) => {
   const authHeader = req.get('Authorization');
   const token = authHeader.split(' ')[1]
   console.log(token)
@@ -14,7 +14,7 @@ const getAll = async (req, res) => {
     return res.status(403).send({message: "Kd a autorizationnn"})
   }
 
-  jwt.verify(token, SECRET_ALUNO, SECRET_PROFESSOR, async (err) => {
+  jwt.verify(token, SECRET_PROFESSOR, async (err) => {
     if (err){
       res.status(403).send({message: '  token não valido', err})
     }
@@ -24,7 +24,25 @@ const getAll = async (req, res) => {
 })
 }
 
-//Busca a agenda do aluno
+const getAllProfessor = async (req, res) => {
+  const authHeader = req.get('Authorization');
+  const token = authHeader.split(' ')[1]
+  console.log(token)
+  if (!token) {
+    return res.status(403).send({message: "Kd a autorizationnn"})
+  }
+
+  jwt.verify(token, SECRET_ALUNO, async (err) => {
+    if (err){
+      res.status(403).send({message: '  token não valido', err})
+    }
+  const agenda = await Agenda.find()
+  .populate('professor')
+  res.status(200).json(agenda)
+})
+}
+
+
 const findAgendaAluno = async (req, res) => {
   const authHeader = req.get('Authorization');
   const token = authHeader.split(' ')[1]
@@ -62,7 +80,7 @@ const findAgendaAluno = async (req, res) => {
 })
 }
 
-//Busca a agenda do professor
+
 const findAgendaProfessor = async (req, res) => {
   const authHeader = req.get('Authorization');
   const token = authHeader.split(' ')[1]
@@ -251,7 +269,8 @@ const token = authHeader.split(' ')[1]
 
 
 module.exports = {
-    getAll,
+  getAllAluno,
+  getAllProfessor,
     createAula,
     IncluirAluno,
     findAgendaAluno,

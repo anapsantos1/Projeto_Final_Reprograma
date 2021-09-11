@@ -160,12 +160,7 @@ const removeOneAluno = async (req, res) => {
           if (aluno == null){
             return res.status(404).json({message: "Aluno  não encontrado"})
           }else{
-          // const aulaAgendada = await Agenda.findOne({"id": req.params.id})
-          // console.log(aulaAgendada)
-          //   if(aulaAgendada){
-          //       res.status(404).json({message: 'Existe uma aula agendada, Por favor cancelar a aula antes de remover o professor'})
-                
-          //     }
+
             aluno.remove()
             res.status(200).json({"mensagem":"Aluno removido com sucesso"})
             

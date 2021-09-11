@@ -3,7 +3,8 @@ const router = express.Router()
 
 const controller = require('../controllers/agendaController')
 
-router.get('/', controller.getAll)
+router.get('/', controller.getAllAluno)
+router.get('/', controller.getAllProfessor)
 
 router.post('/aula', controller.createAula)
 
